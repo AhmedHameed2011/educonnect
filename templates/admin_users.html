@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Panel - User Management</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body style="padding: 20px; font-family: Inter, sans-serif;">
+
+    <h1 style="margin-bottom: 20px;">Admin Panel — User Management</h1>
+
+    <a href="{{ url_for('dashboard.home') }}" style="color:#6366f1; font-weight:600;">← Back to Dashboard</a>
+
+    <hr style="margin: 20px 0;">
+
+    <!-- Flash Messages -->
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for msg in messages %}
+          <div style="background:#fee2e2; padding:10px; border-radius:8px; margin-bottom:10px; color:#b91c1c;">
+            {{ msg }}
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    <!-- Add User Form -->
+    <h2>Add New User</h2>
+    <form action="{{ url_for('admin.add_user') }}" method="POST" style="margin-bottom: 30px;">
+        <input type="text" name="username" placeholder="Username" required class="form-input">
+        <input type="text" name="name" placeholder="Full Name" required class="form-input">
+        <select name="role" class="form-input">
+            <option value="teacher">Teacher</option>
+            <option value="parent">Parent</option>
+            <option value="admin">Admin</option>
+        </select>
+        <input type="password" name="password" placeholder="Password" required class="form-input">
+        <button class="login-btn" style="margin-top:10px;">Add User</button>
+    </form>
+
+    <hr style="margin: 20px 0;">
+
+    <!-- User List -->
+    <h2>All Users</h2>
+
+    <table style="width:100%; border-collapse: collapse;">
+        <tr style="background:#f1f5f9;">
+            <th style="padding:10px; text-align:left;">Name</th>
+            <th style="padding:10px; text-align:left;">Username</th>
+            <th style="padding:10px; text-align:left;">Role</th>
+            <th style="padding:10px; text-align:left;">Actions</th>
+        </tr>
+
+        {% for user in users %}
+        <tr style="border-bottom:1px solid #e2e8f0;">
+            <td style="padding:10px;">{{ user.name }}</td>
+            <td style="padding:10px;">{{ user.username }}</td>
+            <td style="padding:10px;">{{ user.role }}</td>
+            <td style="padding:10px;">
+                <!-- Reset Password -->
+                <form action="{{ url_for('admin.reset_password', user_id=user.id) }}" method="POST" style="display:inline;">
+                    <input type="password" name="new_password" placeholder="New Password" required style="padding:6px;">
+                    <button style="background:#4f46e5; color:white; padding:6px 10px; border:none; border-radius:6px;">Reset</button>
+                </form>
+
+                <!-- Delete -->
+                <a href="{{ url_for('admin.delete_user', user_id=user.id) }}"
+                   style="color:#dc2626; margin-left:10px; font-weight:600;"
+                   onclick="return confirm('Delete this user?');">
+                   Delete
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</body>
+</html>

@@ -1,0 +1,874 @@
+[
+    {
+        "label": "Blueprint",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "render_template",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "redirect",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "url_for",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "flash",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "Blueprint",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "render_template",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "redirect",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "url_for",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "flash",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "Blueprint",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "render_template",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "Blueprint",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "jsonify",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "Blueprint",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "jsonify",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "Blueprint",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "jsonify",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "Flask",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "login_required",
+        "importPath": "flask_login",
+        "description": "flask_login",
+        "isExtraImport": true,
+        "detail": "flask_login",
+        "documentation": {}
+    },
+    {
+        "label": "current_user",
+        "importPath": "flask_login",
+        "description": "flask_login",
+        "isExtraImport": true,
+        "detail": "flask_login",
+        "documentation": {}
+    },
+    {
+        "label": "login_user",
+        "importPath": "flask_login",
+        "description": "flask_login",
+        "isExtraImport": true,
+        "detail": "flask_login",
+        "documentation": {}
+    },
+    {
+        "label": "logout_user",
+        "importPath": "flask_login",
+        "description": "flask_login",
+        "isExtraImport": true,
+        "detail": "flask_login",
+        "documentation": {}
+    },
+    {
+        "label": "login_required",
+        "importPath": "flask_login",
+        "description": "flask_login",
+        "isExtraImport": true,
+        "detail": "flask_login",
+        "documentation": {}
+    },
+    {
+        "label": "login_required",
+        "importPath": "flask_login",
+        "description": "flask_login",
+        "isExtraImport": true,
+        "detail": "flask_login",
+        "documentation": {}
+    },
+    {
+        "label": "current_user",
+        "importPath": "flask_login",
+        "description": "flask_login",
+        "isExtraImport": true,
+        "detail": "flask_login",
+        "documentation": {}
+    },
+    {
+        "label": "login_required",
+        "importPath": "flask_login",
+        "description": "flask_login",
+        "isExtraImport": true,
+        "detail": "flask_login",
+        "documentation": {}
+    },
+    {
+        "label": "login_required",
+        "importPath": "flask_login",
+        "description": "flask_login",
+        "isExtraImport": true,
+        "detail": "flask_login",
+        "documentation": {}
+    },
+    {
+        "label": "current_user",
+        "importPath": "flask_login",
+        "description": "flask_login",
+        "isExtraImport": true,
+        "detail": "flask_login",
+        "documentation": {}
+    },
+    {
+        "label": "login_required",
+        "importPath": "flask_login",
+        "description": "flask_login",
+        "isExtraImport": true,
+        "detail": "flask_login",
+        "documentation": {}
+    },
+    {
+        "label": "current_user",
+        "importPath": "flask_login",
+        "description": "flask_login",
+        "isExtraImport": true,
+        "detail": "flask_login",
+        "documentation": {}
+    },
+    {
+        "label": "LoginManager",
+        "importPath": "flask_login",
+        "description": "flask_login",
+        "isExtraImport": true,
+        "detail": "flask_login",
+        "documentation": {}
+    },
+    {
+        "label": "UserMixin",
+        "importPath": "flask_login",
+        "description": "flask_login",
+        "isExtraImport": true,
+        "detail": "flask_login",
+        "documentation": {}
+    },
+    {
+        "label": "generate_password_hash",
+        "importPath": "werkzeug.security",
+        "description": "werkzeug.security",
+        "isExtraImport": true,
+        "detail": "werkzeug.security",
+        "documentation": {}
+    },
+    {
+        "label": "generate_password_hash",
+        "importPath": "werkzeug.security",
+        "description": "werkzeug.security",
+        "isExtraImport": true,
+        "detail": "werkzeug.security",
+        "documentation": {}
+    },
+    {
+        "label": "check_password_hash",
+        "importPath": "werkzeug.security",
+        "description": "werkzeug.security",
+        "isExtraImport": true,
+        "detail": "werkzeug.security",
+        "documentation": {}
+    },
+    {
+        "label": "db",
+        "importPath": "extensions",
+        "description": "extensions",
+        "isExtraImport": true,
+        "detail": "extensions",
+        "documentation": {}
+    },
+    {
+        "label": "db",
+        "importPath": "extensions",
+        "description": "extensions",
+        "isExtraImport": true,
+        "detail": "extensions",
+        "documentation": {}
+    },
+    {
+        "label": "db",
+        "importPath": "extensions",
+        "description": "extensions",
+        "isExtraImport": true,
+        "detail": "extensions",
+        "documentation": {}
+    },
+    {
+        "label": "db",
+        "importPath": "extensions",
+        "description": "extensions",
+        "isExtraImport": true,
+        "detail": "extensions",
+        "documentation": {}
+    },
+    {
+        "label": "db",
+        "importPath": "extensions",
+        "description": "extensions",
+        "isExtraImport": true,
+        "detail": "extensions",
+        "documentation": {}
+    },
+    {
+        "label": "db",
+        "importPath": "extensions",
+        "description": "extensions",
+        "isExtraImport": true,
+        "detail": "extensions",
+        "documentation": {}
+    },
+    {
+        "label": "login_manager",
+        "importPath": "extensions",
+        "description": "extensions",
+        "isExtraImport": true,
+        "detail": "extensions",
+        "documentation": {}
+    },
+    {
+        "label": "db",
+        "importPath": "extensions",
+        "description": "extensions",
+        "isExtraImport": true,
+        "detail": "extensions",
+        "documentation": {}
+    },
+    {
+        "label": "User",
+        "importPath": "models",
+        "description": "models",
+        "isExtraImport": true,
+        "detail": "models",
+        "documentation": {}
+    },
+    {
+        "label": "User",
+        "importPath": "models",
+        "description": "models",
+        "isExtraImport": true,
+        "detail": "models",
+        "documentation": {}
+    },
+    {
+        "label": "User",
+        "importPath": "models",
+        "description": "models",
+        "isExtraImport": true,
+        "detail": "models",
+        "documentation": {}
+    },
+    {
+        "label": "Message",
+        "importPath": "models",
+        "description": "models",
+        "isExtraImport": true,
+        "detail": "models",
+        "documentation": {}
+    },
+    {
+        "label": "Notification",
+        "importPath": "models",
+        "description": "models",
+        "isExtraImport": true,
+        "detail": "models",
+        "documentation": {}
+    },
+    {
+        "label": "Event",
+        "importPath": "models",
+        "description": "models",
+        "isExtraImport": true,
+        "detail": "models",
+        "documentation": {}
+    },
+    {
+        "label": "Event",
+        "importPath": "models",
+        "description": "models",
+        "isExtraImport": true,
+        "detail": "models",
+        "documentation": {}
+    },
+    {
+        "label": "Message",
+        "importPath": "models",
+        "description": "models",
+        "isExtraImport": true,
+        "detail": "models",
+        "documentation": {}
+    },
+    {
+        "label": "User",
+        "importPath": "models",
+        "description": "models",
+        "isExtraImport": true,
+        "detail": "models",
+        "documentation": {}
+    },
+    {
+        "label": "Notification",
+        "importPath": "models",
+        "description": "models",
+        "isExtraImport": true,
+        "detail": "models",
+        "documentation": {}
+    },
+    {
+        "label": "User",
+        "importPath": "models",
+        "description": "models",
+        "isExtraImport": true,
+        "detail": "models",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "admin_bp",
+        "importPath": "routes.admin",
+        "description": "routes.admin",
+        "isExtraImport": true,
+        "detail": "routes.admin",
+        "documentation": {}
+    },
+    {
+        "label": "Config",
+        "importPath": "config",
+        "description": "config",
+        "isExtraImport": true,
+        "detail": "config",
+        "documentation": {}
+    },
+    {
+        "label": "auth_bp",
+        "importPath": "routes.auth",
+        "description": "routes.auth",
+        "isExtraImport": true,
+        "detail": "routes.auth",
+        "documentation": {}
+    },
+    {
+        "label": "dashboard_bp",
+        "importPath": "routes.dashboard",
+        "description": "routes.dashboard",
+        "isExtraImport": true,
+        "detail": "routes.dashboard",
+        "documentation": {}
+    },
+    {
+        "label": "messages_bp",
+        "importPath": "routes.messages",
+        "description": "routes.messages",
+        "isExtraImport": true,
+        "detail": "routes.messages",
+        "documentation": {}
+    },
+    {
+        "label": "notifications_bp",
+        "importPath": "routes.notifications",
+        "description": "routes.notifications",
+        "isExtraImport": true,
+        "detail": "routes.notifications",
+        "documentation": {}
+    },
+    {
+        "label": "events_bp",
+        "importPath": "routes.events",
+        "description": "routes.events",
+        "isExtraImport": true,
+        "detail": "routes.events",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "SQLAlchemy",
+        "importPath": "flask_sqlalchemy",
+        "description": "flask_sqlalchemy",
+        "isExtraImport": true,
+        "detail": "flask_sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "SQLAlchemy",
+        "importPath": "flask_sqlalchemy",
+        "description": "flask_sqlalchemy",
+        "isExtraImport": true,
+        "detail": "flask_sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "admin_only",
+        "kind": 2,
+        "importPath": "routes.admin",
+        "description": "routes.admin",
+        "peekOfCode": "def admin_only():\n    if current_user.role != \"admin\":\n        flash(\"Access denied. Admins only.\")\n        return False\n    return True\n# ---------------------------\n# USER MANAGEMENT DASHBOARD\n# ---------------------------\n@admin_bp.route(\"/users\")\n@login_required",
+        "detail": "routes.admin",
+        "documentation": {}
+    },
+    {
+        "label": "users",
+        "kind": 2,
+        "importPath": "routes.admin",
+        "description": "routes.admin",
+        "peekOfCode": "def users():\n    if not admin_only():\n        return redirect(url_for(\"dashboard.home\"))\n    all_users = User.query.order_by(User.role.asc()).all()\n    return render_template(\"admin_users.html\", users=all_users)\n# ---------------------------\n# ADD USER\n# ---------------------------\n@admin_bp.route(\"/add-user\", methods=[\"POST\"])\n@login_required",
+        "detail": "routes.admin",
+        "documentation": {}
+    },
+    {
+        "label": "add_user",
+        "kind": 2,
+        "importPath": "routes.admin",
+        "description": "routes.admin",
+        "peekOfCode": "def add_user():\n    if not admin_only():\n        return redirect(url_for(\"dashboard.home\"))\n    username = request.form.get(\"username\").strip()\n    name = request.form.get(\"name\").strip()\n    role = request.form.get(\"role\")\n    password = request.form.get(\"password\").strip()\n    if User.query.filter_by(username=username).first():\n        flash(\"Username already exists.\")\n        return redirect(url_for(\"admin.users\"))",
+        "detail": "routes.admin",
+        "documentation": {}
+    },
+    {
+        "label": "delete_user",
+        "kind": 2,
+        "importPath": "routes.admin",
+        "description": "routes.admin",
+        "peekOfCode": "def delete_user(user_id):\n    if not admin_only():\n        return redirect(url_for(\"dashboard.home\"))\n    user = User.query.get_or_404(user_id)\n    if user.role == \"admin\" and user.id == current_user.id:\n        flash(\"You cannot delete your own admin account.\")\n        return redirect(url_for(\"admin.users\"))\n    db.session.delete(user)\n    db.session.commit()\n    flash(\"User deleted successfully.\")",
+        "detail": "routes.admin",
+        "documentation": {}
+    },
+    {
+        "label": "reset_password",
+        "kind": 2,
+        "importPath": "routes.admin",
+        "description": "routes.admin",
+        "peekOfCode": "def reset_password(user_id):\n    if not admin_only():\n        return redirect(url_for(\"dashboard.home\"))\n    new_password = request.form.get(\"new_password\").strip()\n    user = User.query.get_or_404(user_id)\n    user.password = generate_password_hash(new_password)\n    db.session.commit()\n    flash(\"Password reset successfully.\")\n    return redirect(url_for(\"admin.users\"))",
+        "detail": "routes.admin",
+        "documentation": {}
+    },
+    {
+        "label": "admin_bp",
+        "kind": 5,
+        "importPath": "routes.admin",
+        "description": "routes.admin",
+        "peekOfCode": "admin_bp = Blueprint(\"admin\", __name__, url_prefix=\"/admin\")\n# ---------------------------\n# ADMIN ACCESS ONLY\n# ---------------------------\ndef admin_only():\n    if current_user.role != \"admin\":\n        flash(\"Access denied. Admins only.\")\n        return False\n    return True\n# ---------------------------",
+        "detail": "routes.admin",
+        "documentation": {}
+    },
+    {
+        "label": "login",
+        "kind": 2,
+        "importPath": "routes.auth",
+        "description": "routes.auth",
+        "peekOfCode": "def login():\n    if request.method == \"POST\":\n        username = request.form.get(\"username\").strip()\n        password = request.form.get(\"password\").strip()\n        user = User.query.filter_by(username=username).first()\n        if user and check_password_hash(user.password, password):\n            login_user(user)\n            flash(\"Login successful.\")\n            return redirect(url_for(\"dashboard.home\"))\n        else:",
+        "detail": "routes.auth",
+        "documentation": {}
+    },
+    {
+        "label": "logout",
+        "kind": 2,
+        "importPath": "routes.auth",
+        "description": "routes.auth",
+        "peekOfCode": "def logout():\n    logout_user()\n    flash(\"Logged out successfully.\")\n    return redirect(url_for(\"auth.login\"))\n# ---------------------------\n# OPTIONAL: CREATE ADMIN USER\n# ---------------------------\n@auth_bp.route(\"/create-admin\")\ndef create_admin():\n    \"\"\"Run once to create the first admin user.\"\"\"",
+        "detail": "routes.auth",
+        "documentation": {}
+    },
+    {
+        "label": "create_admin",
+        "kind": 2,
+        "importPath": "routes.auth",
+        "description": "routes.auth",
+        "peekOfCode": "def create_admin():\n    \"\"\"Run once to create the first admin user.\"\"\"\n    if User.query.filter_by(username=\"admin\").first():\n        return \"Admin already exists.\"\n    admin = User(\n        username=\"admin\",\n        name=\"School Admin\",\n        role=\"admin\",\n        password=generate_password_hash(\"admin123\"),\n        avatar=\"https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&q=80\"",
+        "detail": "routes.auth",
+        "documentation": {}
+    },
+    {
+        "label": "auth_bp",
+        "kind": 5,
+        "importPath": "routes.auth",
+        "description": "routes.auth",
+        "peekOfCode": "auth_bp = Blueprint(\"auth\", __name__, url_prefix=\"/auth\")\n# ---------------------------\n# LOGIN\n# ---------------------------\n@auth_bp.route(\"/login\", methods=[\"GET\", \"POST\"])\ndef login():\n    if request.method == \"POST\":\n        username = request.form.get(\"username\").strip()\n        password = request.form.get(\"password\").strip()\n        user = User.query.filter_by(username=username).first()",
+        "detail": "routes.auth",
+        "documentation": {}
+    },
+    {
+        "label": "home",
+        "kind": 2,
+        "importPath": "routes.dashboard",
+        "description": "routes.dashboard",
+        "peekOfCode": "def home():\n    # Load sidebar users (teachers, admin office, etc.)\n    users = User.query.filter(User.id != current_user.id).all()\n    # Load notifications\n    notifications = Notification.query.order_by(Notification.timestamp.desc()).limit(10).all()\n    # Load events\n    events = Event.query.order_by(Event.date.asc()).all()\n    return render_template(\n        \"index.html\",\n        current_user=current_user,",
+        "detail": "routes.dashboard",
+        "documentation": {}
+    },
+    {
+        "label": "dashboard_bp",
+        "kind": 5,
+        "importPath": "routes.dashboard",
+        "description": "routes.dashboard",
+        "peekOfCode": "dashboard_bp = Blueprint(\"dashboard\", __name__)\n@dashboard_bp.route(\"/\")\n@login_required\ndef home():\n    # Load sidebar users (teachers, admin office, etc.)\n    users = User.query.filter(User.id != current_user.id).all()\n    # Load notifications\n    notifications = Notification.query.order_by(Notification.timestamp.desc()).limit(10).all()\n    # Load events\n    events = Event.query.order_by(Event.date.asc()).all()",
+        "detail": "routes.dashboard",
+        "documentation": {}
+    },
+    {
+        "label": "list_events",
+        "kind": 2,
+        "importPath": "routes.events",
+        "description": "routes.events",
+        "peekOfCode": "def list_events():\n    events = Event.query.order_by(Event.date.asc()).all()\n    return jsonify([\n        {\n            \"id\": e.id,\n            \"title\": e.title,\n            \"description\": e.description,\n            \"date\": e.date\n        }\n        for e in events",
+        "detail": "routes.events",
+        "documentation": {}
+    },
+    {
+        "label": "add_event",
+        "kind": 2,
+        "importPath": "routes.events",
+        "description": "routes.events",
+        "peekOfCode": "def add_event():\n    data = request.json\n    title = data.get(\"title\")\n    date = data.get(\"date\")\n    description = data.get(\"description\", \"\")\n    event = Event(\n        title=title,\n        date=date,\n        description=description,\n        timestamp=datetime.utcnow()",
+        "detail": "routes.events",
+        "documentation": {}
+    },
+    {
+        "label": "events_bp",
+        "kind": 5,
+        "importPath": "routes.events",
+        "description": "routes.events",
+        "peekOfCode": "events_bp = Blueprint(\"events\", __name__, url_prefix=\"/events\")\n# ---------------------------\n# GET EVENTS\n# ---------------------------\n@events_bp.route(\"/list\")\n@login_required\ndef list_events():\n    events = Event.query.order_by(Event.date.asc()).all()\n    return jsonify([\n        {",
+        "detail": "routes.events",
+        "documentation": {}
+    },
+    {
+        "label": "chat_history",
+        "kind": 2,
+        "importPath": "routes.messages",
+        "description": "routes.messages",
+        "peekOfCode": "def chat_history(user_id):\n    other_user = User.query.get_or_404(user_id)\n    msgs = Message.query.filter(\n        ((Message.sender_id == current_user.id) & (Message.receiver_id == user_id)) |\n        ((Message.sender_id == user_id) & (Message.receiver_id == current_user.id))\n    ).order_by(Message.timestamp.asc()).all()\n    return jsonify([\n        {\n            \"id\": m.id,\n            \"sender\": m.sender_id,",
+        "detail": "routes.messages",
+        "documentation": {}
+    },
+    {
+        "label": "send_message",
+        "kind": 2,
+        "importPath": "routes.messages",
+        "description": "routes.messages",
+        "peekOfCode": "def send_message():\n    data = request.json\n    receiver_id = data.get(\"receiver_id\")\n    content = data.get(\"content\")\n    if not receiver_id or not content:\n        return jsonify({\"error\": \"Missing fields\"}), 400\n    msg = Message(\n        sender_id=current_user.id,\n        receiver_id=receiver_id,\n        content=content,",
+        "detail": "routes.messages",
+        "documentation": {}
+    },
+    {
+        "label": "messages_bp",
+        "kind": 5,
+        "importPath": "routes.messages",
+        "description": "routes.messages",
+        "peekOfCode": "messages_bp = Blueprint(\"messages\", __name__, url_prefix=\"/messages\")\n# ---------------------------\n# GET CHAT HISTORY\n# ---------------------------\n@messages_bp.route(\"/history/<int:user_id>\")\n@login_required\ndef chat_history(user_id):\n    other_user = User.query.get_or_404(user_id)\n    msgs = Message.query.filter(\n        ((Message.sender_id == current_user.id) & (Message.receiver_id == user_id)) |",
+        "detail": "routes.messages",
+        "documentation": {}
+    },
+    {
+        "label": "list_notifications",
+        "kind": 2,
+        "importPath": "routes.notifications",
+        "description": "routes.notifications",
+        "peekOfCode": "def list_notifications():\n    notifs = Notification.query.order_by(Notification.timestamp.desc()).all()\n    return jsonify([\n        {\n            \"id\": n.id,\n            \"title\": n.title,\n            \"content\": n.content,\n            \"priority\": n.priority,\n            \"timestamp\": n.timestamp.strftime(\"%Y-%m-%d %H:%M\")\n        }",
+        "detail": "routes.notifications",
+        "documentation": {}
+    },
+    {
+        "label": "broadcast",
+        "kind": 2,
+        "importPath": "routes.notifications",
+        "description": "routes.notifications",
+        "peekOfCode": "def broadcast():\n    data = request.json\n    title = data.get(\"title\")\n    content = data.get(\"content\")\n    priority = data.get(\"priority\", \"normal\")\n    notif = Notification(\n        title=title,\n        content=content,\n        priority=priority,\n        timestamp=datetime.utcnow()",
+        "detail": "routes.notifications",
+        "documentation": {}
+    },
+    {
+        "label": "notifications_bp",
+        "kind": 5,
+        "importPath": "routes.notifications",
+        "description": "routes.notifications",
+        "peekOfCode": "notifications_bp = Blueprint(\"notifications\", __name__, url_prefix=\"/notifications\")\n# ---------------------------\n# GET NOTIFICATIONS\n# ---------------------------\n@notifications_bp.route(\"/list\")\n@login_required\ndef list_notifications():\n    notifs = Notification.query.order_by(Notification.timestamp.desc()).all()\n    return jsonify([\n        {",
+        "detail": "routes.notifications",
+        "documentation": {}
+    },
+    {
+        "label": "create_app",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def create_app():\n    app = Flask(__name__)\n    app.config.from_object(Config)\n    # Initialize extensions\n    db.init_app(app)\n    login_manager.init_app(app)\n    # User loader for Flask-Login\n    @login_manager.user_loader\n    def load_user(user_id):\n        return User.query.get(int(user_id))",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "Config",
+        "kind": 6,
+        "importPath": "config",
+        "description": "config",
+        "peekOfCode": "class Config:\n    SECRET_KEY = \"educonnect_super_secret_key\"\n    SQLALCHEMY_DATABASE_URI = \"sqlite:///educonnect.db\"\n    SQLALCHEMY_TRACK_MODIFICATIONS = False",
+        "detail": "config",
+        "documentation": {}
+    },
+    {
+        "label": "db",
+        "kind": 5,
+        "importPath": "extensions",
+        "description": "extensions",
+        "peekOfCode": "db = SQLAlchemy()\nlogin_manager = LoginManager()\nlogin_manager.login_view = \"auth.login\"",
+        "detail": "extensions",
+        "documentation": {}
+    },
+    {
+        "label": "login_manager",
+        "kind": 5,
+        "importPath": "extensions",
+        "description": "extensions",
+        "peekOfCode": "login_manager = LoginManager()\nlogin_manager.login_view = \"auth.login\"",
+        "detail": "extensions",
+        "documentation": {}
+    },
+    {
+        "label": "login_manager.login_view",
+        "kind": 5,
+        "importPath": "extensions",
+        "description": "extensions",
+        "peekOfCode": "login_manager.login_view = \"auth.login\"",
+        "detail": "extensions",
+        "documentation": {}
+    },
+    {
+        "label": "User",
+        "kind": 6,
+        "importPath": "models",
+        "description": "models",
+        "peekOfCode": "class User(UserMixin, db.Model):\n    id = db.Column(db.Integer, primary_key=True)\n    username = db.Column(db.String(50), unique=True, nullable=False)\n    password = db.Column(db.String(200), nullable=False)\n    role = db.Column(db.String(20), nullable=False)\n    name = db.Column(db.String(100), nullable=False)\n    avatar = db.Column(db.String(255), nullable=True)\nclass Message(db.Model):\n    id = db.Column(db.Integer, primary_key=True)\n    sender_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)",
+        "detail": "models",
+        "documentation": {}
+    },
+    {
+        "label": "Message",
+        "kind": 6,
+        "importPath": "models",
+        "description": "models",
+        "peekOfCode": "class Message(db.Model):\n    id = db.Column(db.Integer, primary_key=True)\n    sender_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)\n    receiver_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)\n    content = db.Column(db.Text, nullable=True)\n    attachment = db.Column(db.String(255), nullable=True)\n    timestamp = db.Column(db.DateTime, default=datetime.utcnow)\nclass Notification(db.Model):\n    id = db.Column(db.Integer, primary_key=True)\n    title = db.Column(db.String(100), nullable=False)",
+        "detail": "models",
+        "documentation": {}
+    },
+    {
+        "label": "Notification",
+        "kind": 6,
+        "importPath": "models",
+        "description": "models",
+        "peekOfCode": "class Notification(db.Model):\n    id = db.Column(db.Integer, primary_key=True)\n    title = db.Column(db.String(100), nullable=False)\n    content = db.Column(db.Text, nullable=False)\n    priority = db.Column(db.String(20), default='normal')\n    timestamp = db.Column(db.DateTime, default=datetime.utcnow)\nclass Event(db.Model):\n    id = db.Column(db.Integer, primary_key=True)\n    title = db.Column(db.String(100), nullable=False)\n    description = db.Column(db.Text, nullable=True)",
+        "detail": "models",
+        "documentation": {}
+    },
+    {
+        "label": "Event",
+        "kind": 6,
+        "importPath": "models",
+        "description": "models",
+        "peekOfCode": "class Event(db.Model):\n    id = db.Column(db.Integer, primary_key=True)\n    title = db.Column(db.String(100), nullable=False)\n    description = db.Column(db.Text, nullable=True)\n    date = db.Column(db.String(20), nullable=False)\n    timestamp = db.Column(db.DateTime, default=datetime.utcnow)\nclass PushSubscription(db.Model):\n    id = db.Column(db.Integer, primary_key=True)\n    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)\n    endpoint = db.Column(db.String(500), nullable=False)",
+        "detail": "models",
+        "documentation": {}
+    },
+    {
+        "label": "PushSubscription",
+        "kind": 6,
+        "importPath": "models",
+        "description": "models",
+        "peekOfCode": "class PushSubscription(db.Model):\n    id = db.Column(db.Integer, primary_key=True)\n    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)\n    endpoint = db.Column(db.String(500), nullable=False)\n    p256dh = db.Column(db.String(200), nullable=False)\n    auth = db.Column(db.String(200), nullable=False)",
+        "detail": "models",
+        "documentation": {}
+    }
+]

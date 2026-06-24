@@ -1,0 +1,36 @@
+{
+    "users": {
+        "admin": {
+            "name": "School Admin",
+            "password": "admin123",
+            "role": "School Admin",
+            "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80"
+        },
+        "mrs_davis": {
+            "name": "Mrs. Davis (Math)",
+            "password": "password123",
+            "role": "teacher",
+            "avatar": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80",
+            "last_msg": "Please don't forget the permissi...",
+            "time": "10:42 AM",
+            "unread": 1
+        },
+        "principal_office": {
+            "name": "Principal Office",
+            "password": "password123",
+            "role": "admin",
+            "avatar": "",
+            "last_msg": "@ Newsletter_Oct.pdf",
+            "time": "Yesterday",
+            "unread": 0,
+            "is_office": true
+        }
+    },
+    "broadcasts": [
+        {
+            "author": "Administration",
+            "time": "2 hours ago",
+            "text": "Reminder: Final term portfolios and standard classroom computer programming modules are due on Wednesday. No exceptions."
+        }
+    ]
+}
