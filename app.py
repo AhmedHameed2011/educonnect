@@ -9,8 +9,6 @@ from routes.messages import messages_bp
 from routes.notifications import notifications_bp
 from routes.events import events_bp
 
-
-
 def create_app():
     app = Flask(__name__)
     app.config.from_object(Config)
@@ -32,14 +30,14 @@ def create_app():
     app.register_blueprint(events_bp)
     app.register_blueprint(admin_bp)
 
-
     # Create DB tables
     with app.app_context():
         db.create_all()
 
     return app
 
+# CREATE THE INSTANCE GLOBALLY SO GUNICORN CAN SEE IT
+app = create_app()
 
 if __name__ == "__main__":
-    app = create_app()
     app.run(debug=True, port=5000)
