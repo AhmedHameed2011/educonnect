@@ -134,26 +134,29 @@
         </nav>
 
         <div id="chatScreen" class="chat-screen">
-            <div class="chat-header-bar glass-panel">
-                <button class="icon-btn" onclick="closeChat()">
-                    <i class="fa-solid fa-chevron-left"></i>
+            <div class="chat-header-bar glass-panel" style="display: flex; align-items: center; padding: 10px 16px;">
+                <button class="icon-btn" onclick="closeChat()" style="background: none; border: none; cursor: pointer; margin-right: 12px; display: flex; align-items: center; justify-content: center;">
+                    <i class="fa-solid fa-chevron-left" style="font-size: 20px; color: #2d3748 !important;"></i>
                 </button>
                 <div class="active-chat-info">
-                    <h2 id="activeChatName">Chat</h2>
-                    <p style="color: var(--success); display: flex; align-items: center; gap: 4px; font-size: 12px; font-weight: 500;">
-                        <i class="fa-solid fa-circle" style="font-size: 8px;"></i> Connected
-                    </p>
+                    <h2 id="activeChatName" style="margin: 0; font-size: 16px; font-weight: 600;">Chat</h2>
+                    <p style="margin: 2px 0 0 0; color: #10b981; font-size: 12px;">Connected</p>
                 </div>
             </div>
+            
             <div id="chatMessages" class="chat-messages"></div>
-            <div class="chat-input-area">
-                <button id="attachBtn" class="icon-btn">
-                    <i class="fa-solid fa-paperclip"></i>
+            
+            <div class="chat-input-area" style="display: flex; align-items: center; gap: 8px; padding: 12px 16px;">
+                <button id="attachBtn" class="icon-btn" style="background: none; border: none; cursor: pointer;">
+                    <i class="fa-solid fa-paperclip" style="font-size: 18px; color: #718096;"></i>
                 </button>
-                <input id="messageInput" type="text" placeholder="Type a message...">
-                <button id="sendBtn" class="icon-btn send-btn" style="color: #ffffff !important; display: flex !important; align-items: center; justify-content: center;">
-                    <i class="fa-solid fa-paper-plane" style="color: #ffffff !important;"></i>
+                
+                <input id="messageInput" type="text" placeholder="Type a message..." style="flex: 1; border-radius: 24px; padding: 10px 16px; border: 1px solid #e2e8f0; outline: none;">
+                
+                <button id="sendBtn" class="icon-btn send-btn" style="width: 40px; height: 40px; background-color: #4f46e5; border-radius: 50%; border: none; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #ffffff !important;">
+                    <i class="fa-solid fa-paper-plane" style="color: #ffffff !important; font-size: 16px;"></i>
                 </button>
+                
                 <div id="attachmentMenu" class="attachment-menu">
                     <div class="attach-option" onclick="simulateAttach('pdf')">
                         <div class="attach-icon bg-blue"><i class="fa-solid fa-file-pdf"></i></div>
@@ -170,7 +173,7 @@
                 </div>
             </div>
         </div>
-
+            
         <div id="roleModal" class="modal-overlay">
             <div class="modal-content">
                 <h2>Current Role</h2>
