@@ -9,7 +9,6 @@
 </head>
 <body>
     <div class="app-container">
-        <!-- Header -->
         <header class="app-header glass-panel">
             <div class="user-info">
                 {% if current_user.avatar %}
@@ -25,28 +24,25 @@
                     <div class="user-name">{{ current_user.name }}</div>
                     <button id="currentRole" class="user-role">
                         {{ current_user.role|capitalize }}
-                        <i class="fas fa-chevron-down"></i>
+                        <i class="fa-solid fa-chevron-down"></i>
                     </button>
                 </div>
             </div>
             <button class="icon-btn" onclick="window.location.href='{{ url_for('auth.logout') }}'">
-                <i class="fas fa-sign-out-alt"></i>
+                <i class="fa-solid fa-right-from-bracket"></i>
             </button>
             {% if current_user.role == "admin" %}
-<button class="icon-btn" onclick="window.location.href='{{ url_for('admin.users') }}'">
-    <i class="fas fa-user-cog"></i>
-</button>
-{% endif %}
-
+            <button class="icon-btn" onclick="window.location.href='{{ url_for('admin.users') }}'">
+                <i class="fa-solid fa-user-gear"></i>
+            </button>
+            {% endif %}
         </header>
 
-        <!-- Main Content -->
         <main class="main-content">
-            <!-- Messages View -->
             <section id="view-messages" class="view active">
                 <h2 class="view-title">Messages</h2>
                 <div class="search-bar">
-                    <i class="fas fa-search"></i>
+                    <i class="fa-solid fa-magnifying-glass"></i>
                     <input type="text" placeholder="Search contacts">
                 </div>
                 <div class="chat-list" id="chatList">
@@ -71,7 +67,6 @@
                 </div>
             </section>
 
-            <!-- Notifications View -->
             <section id="view-notifications" class="view">
                 <h2 class="view-title">Notifications</h2>
                 <div id="notificationList" class="notification-list">
@@ -100,13 +95,12 @@
                 </div>
             </section>
 
-            <!-- Calendar View -->
             <section id="view-calendar" class="view">
                 <h2 class="view-title">Calendar</h2>
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
-                    <button id="prevMonth" class="icon-btn"><i class="fas fa-chevron-left"></i></button>
+                    <button id="prevMonth" class="icon-btn"><i class="fa-solid fa-chevron-left"></i></button>
                     <div id="monthYear" style="font-weight:600;"></div>
-                    <button id="nextMonth" class="icon-btn"><i class="fas fa-chevron-right"></i></button>
+                    <button id="nextMonth" class="icon-btn"><i class="fa-solid fa-chevron-right"></i></button>
                 </div>
                 <div id="calendarGrid" style="display:grid; grid-template-columns:repeat(7,1fr); gap:4px;"></div>
 
@@ -124,65 +118,64 @@
             </section>
         </main>
 
-        <!-- Bottom Navigation -->
         <nav class="bottom-nav glass-panel">
             <button class="nav-item active" data-target="view-messages">
-                <i class="fas fa-comments"></i>
+                <i class="fa-solid fa-comments"></i>
                 <span>Messages</span>
             </button>
             <button class="nav-item" data-target="view-notifications">
-                <i class="fas fa-bell"></i>
+                <i class="fa-solid fa-bell"></i>
                 <span>Alerts</span>
             </button>
             <button class="nav-item" data-target="view-calendar">
-                <i class="fas fa-calendar-alt"></i>
+                <i class="fa-solid fa-calendar-days"></i>
                 <span>Calendar</span>
             </button>
         </nav>
 
-        <!-- Chat Screen Overlay -->
         <div id="chatScreen" class="chat-screen">
             <div class="chat-header-bar glass-panel">
                 <button class="icon-btn" onclick="closeChat()">
-                    <i class="fas fa-arrow-left"></i>
+                    <i class="fa-solid fa-chevron-left"></i>
                 </button>
                 <div class="active-chat-info">
                     <h2 id="activeChatName">Chat</h2>
-                    <p>Connected</p>
+                    <p style="color: var(--success); display: flex; align-items: center; gap: 4px; font-size: 12px; font-weight: 500;">
+                        <i class="fa-solid fa-circle" style="font-size: 8px;"></i> Connected
+                    </p>
                 </div>
             </div>
             <div id="chatMessages" class="chat-messages"></div>
             <div class="chat-input-area">
                 <button id="attachBtn" class="icon-btn">
-                    <i class="fas fa-paperclip"></i>
+                    <i class="fa-solid fa-paperclip"></i>
                 </button>
                 <input id="messageInput" type="text" placeholder="Type a message...">
-                <button id="sendBtn" class="icon-btn send-btn">
-                    <i class="fas fa-paper-plane"></i>
+                <button id="sendBtn" class="icon-btn send-btn" style="color: #ffffff !important; display: flex !important; align-items: center; justify-content: center;">
+                    <i class="fa-solid fa-paper-plane" style="color: #ffffff !important;"></i>
                 </button>
                 <div id="attachmentMenu" class="attachment-menu">
                     <div class="attach-option" onclick="simulateAttach('pdf')">
-                        <div class="attach-icon bg-blue"><i class="fas fa-file-pdf"></i></div>
+                        <div class="attach-icon bg-blue"><i class="fa-solid fa-file-pdf"></i></div>
                         <span>PDF</span>
                     </div>
                     <div class="attach-option" onclick="simulateAttach('doc')">
-                        <div class="attach-icon bg-purple"><i class="fas fa-file-alt"></i></div>
+                        <div class="attach-icon bg-purple"><i class="fa-solid fa-file-lines"></i></div>
                         <span>Document</span>
                     </div>
                     <div class="attach-option" onclick="simulateAttach('image')">
-                        <div class="attach-icon bg-pink"><i class="fas fa-image"></i></div>
+                        <div class="attach-icon bg-pink"><i class="fa-solid fa-image"></i></div>
                         <span>Image</span>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Role Modal -->
         <div id="roleModal" class="modal-overlay">
             <div class="modal-content">
                 <h2>Current Role</h2>
                 <button class="role-option active">
-                    <i class="fas fa-user-shield"></i>
+                    <i class="fa-solid fa-user-shield"></i>
                     {{ current_user.role|capitalize }}
                 </button>
             </div>
