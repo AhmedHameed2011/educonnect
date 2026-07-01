@@ -777,3 +777,49 @@ body {
 .logo-container:hover .chat-badge {
     transform: translate(2px, 2px) scale(1.05);
 }
+
+/* =================================================================
+   MOBILE RESPONSIVE ADJUSTMENTS FOR EDUCONNECT DASHBOARD
+   ================================================================= */
+@media (max-width: 480px) {
+    /* 1. Eliminate the desktop outer phone-frame wrapper on mobile screens */
+    .device-frame {
+        padding: 0 !important;
+        border-radius: 0 !important;
+        max-width: 100% !important;
+        height: 100vh !important;
+        box-shadow: none !important;
+        background: transparent !important;
+    }
+
+    /* 2. Force the main interface container to span full width and height */
+    .app-container {
+        border-radius: 0 !important;
+        height: 100vh !important;
+        width: 100vw !important;
+        max-height: 100vh !important;
+    }
+
+    /* 3. Adjust layouts for internal pages to take up full available vertical space */
+    .main-content {
+        flex: 1;
+        overflow-y: auto;
+        padding: 12px;
+    }
+
+    /* 4. Fix full-screen chat window alignment on mobile devices */
+    .chat-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        border-radius: 0 !important;
+        z-index: 999;
+    }
+
+    /* 5. Make sure form panels look neat across all alerts & calendar settings */
+    .form-input {
+        font-size: 16px !important; /* Prevents iOS Safari from auto-zooming into fields */
+    }
+}
