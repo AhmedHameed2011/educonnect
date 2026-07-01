@@ -703,3 +703,77 @@ body {
 .role-option.active i {
     color: var(--primary);
 }
+
+/* --- Pure CSS Logo Layout --- */
+.logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.logo-icon-wrapper {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    margin-bottom: 0.75rem;
+}
+
+/* Base style for the badge layers */
+.logo-badge {
+    position: absolute;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.2);
+    transition: transform 0.3s ease;
+}
+
+/* Top Badge: Graduation Cap */
+.cap-badge {
+    width: 55px;
+    height: 55px;
+    background: linear-gradient(135deg, #4f46e5, #3730a3);
+    color: #ffffff;
+    font-size: 24px;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+/* Bottom/Overlapping Badge: Communications Node */
+.chat-badge {
+    width: 45px;
+    height: 45px;
+    background: linear-gradient(135deg, #059669, #047857); /* Growth green accent matching the concept */
+    color: #ffffff;
+    font-size: 18px;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+    border: 3px solid #ffffff; /* Creates the distinct interlocking separation cutout */
+}
+
+/* Typography Link */
+.logo-text {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1e293b;
+    letter-spacing: -0.5px;
+    margin: 0;
+}
+
+.logo-text span {
+    color: #4f46e5; /* Accentuate the 'Connect' with Deep Indigo */
+}
+
+/* Subtle Hover Animation */
+.logo-container:hover .cap-badge {
+    transform: translateY(-2px) rotate(-5deg);
+}
+.logo-container:hover .chat-badge {
+    transform: translate(2px, 2px) scale(1.05);
+}

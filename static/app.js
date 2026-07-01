@@ -140,6 +140,32 @@ function initChatActions() {
     }
 }
 
+function deleteMessage(buttonElement, messageId) {
+    if (!confirm("Are you sure you want to delete this message?")) return;
+
+    fetch(`/messages/delete/${messageId}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Find the closest wrapper container element and delete it from view instantly
+            const container = buttonElement.closest('.message-bubble-container');
+            if (container) {
+                container.remove();
+            } else {
+                // Fallback: removes the immediate parent row if class is different
+                buttonElement.parentElement.parentElement.remove();
+            }
+        } else {
+            alert(data.error || "Unable to complete delete request.");
+        }
+    })
+    .catch(err => console.error("Error connecting to server delete endpoint:", err));
+}
 async function loadChatHistory() {
     if (!activeChatUserId) return;
     const chatMessages = document.getElementById('chatMessages');
@@ -152,21 +178,92 @@ async function loadChatHistory() {
         const isSent = msg.sender === CURRENT_USER_ID;
         const wrapper = document.createElement('div');
         wrapper.className = `message ${isSent ? 'sent' : 'received'}`;
+        
+        // Force the wrapper to stack its contents vertically on mobile
+        wrapper.style.display = 'flex';
+        wrapper.style.flexDirection = 'column';
+        wrapper.style.alignItems = isSent ? 'flex-end' : 'flex-start';
+        wrapper.style.marginBottom = '14px';
+        wrapper.style.width = '100%';
 
+        // 1. Message Bubble Text Content
         const content = document.createElement('div');
         content.className = 'message-content';
         content.textContent = msg.content;
+        
+        // Optional layout polish just in case CSS restricts it
+        content.style.maxWidth = '75%';
+        content.style.wordBreak = 'break-word'; 
+
+        // 2. Separate Metadata Container (Placed UNDER the bubble)
+        const metaContainer = document.createElement('div');
+        metaContainer.style.display = 'flex';
+        metaContainer.style.alignItems = 'center';
+        metaContainer.style.gap = '6px';
+        metaContainer.style.marginTop = '4px';
+        metaContainer.style.padding = '0 6px';
 
         const time = document.createElement('span');
         time.className = 'message-time';
         time.textContent = msg.timestamp;
+        time.style.fontSize = '11px';
+        time.style.color = '#94a3b8';
+        metaContainer.appendChild(time);
 
-        content.appendChild(time);
+        // 3. Add the delete trash button if sent by current user
+        if (isSent) {
+            const deleteBtn = document.createElement('button');
+            deleteBtn.style.background = 'none';
+            deleteBtn.style.border = 'none';
+            deleteBtn.style.padding = '0';
+            deleteBtn.style.cursor = 'pointer';
+            deleteBtn.style.color = '#dc2626';
+            deleteBtn.style.display = 'inline-flex';
+            deleteBtn.style.alignItems = 'center';
+            deleteBtn.title = 'Delete';
+
+            deleteBtn.innerHTML = '<i class="fa-solid fa-trash-can" style="font-size: 11px;"></i>';
+
+            deleteBtn.onclick = function() {
+                deleteMessage(wrapper, msg.id);
+            };
+
+            metaContainer.appendChild(deleteBtn);
+        }
+
+        // Append to the main row layout container sequentially
         wrapper.appendChild(content);
+        wrapper.appendChild(metaContainer);
         chatMessages.appendChild(wrapper);
     });
 
     chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+function deleteMessage(messageWrapperElement, messageId) {
+    if (!confirm("Are you sure you want to delete this message?")) return;
+
+    fetch(`/messages/delete/${messageId}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // This safely catches the entire message row regardless of 'sent' or 'received' structures
+            if (messageWrapperElement && typeof messageWrapperElement.remove === 'function') {
+                messageWrapperElement.remove();
+            } else {
+                // Safe fallback to force reload the active dialogue if tracking fails
+                loadChatHistory();
+            }
+        } else {
+            alert(data.error || "Unable to complete delete request.");
+        }
+    })
+    .catch(err => console.error("Error deleting message:", err));
 }
 
 function simulateAttach(type) {

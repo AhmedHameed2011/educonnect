@@ -593,11 +593,11 @@
         "documentation": {}
     },
     {
-        "label": "admin_only",
+        "label": "check_admin_or_redirect",
         "kind": 2,
         "importPath": "routes.admin",
         "description": "routes.admin",
-        "peekOfCode": "def admin_only():\n    if current_user.role != \"admin\":\n        flash(\"Access denied. Admins only.\")\n        return False\n    return True\n# ---------------------------\n# USER MANAGEMENT DASHBOARD\n# ---------------------------\n@admin_bp.route(\"/users\")\n@login_required",
+        "peekOfCode": "def check_admin_or_redirect():\n    \"\"\"Helper to enforce strict admin role checks reliably.\"\"\"\n    if not current_user.is_authenticated or current_user.role != \"admin\":\n        flash(\"Access denied. Admins only.\")\n        return redirect(url_for(\"dashboard.home\"))\n    return None\n# ---------------------------\n# USER MANAGEMENT DASHBOARD\n# ---------------------------\n@admin_bp.route(\"/users\")",
         "detail": "routes.admin",
         "documentation": {}
     },
@@ -606,7 +606,7 @@
         "kind": 2,
         "importPath": "routes.admin",
         "description": "routes.admin",
-        "peekOfCode": "def users():\n    if not admin_only():\n        return redirect(url_for(\"dashboard.home\"))\n    all_users = User.query.order_by(User.role.asc()).all()\n    return render_template(\"admin_users.html\", users=all_users)\n# ---------------------------\n# ADD USER\n# ---------------------------\n@admin_bp.route(\"/add-user\", methods=[\"POST\"])\n@login_required",
+        "peekOfCode": "def users():\n    redirect_target = check_admin_or_redirect()\n    if redirect_target:\n        return redirect_target\n    all_users = User.query.order_by(User.role.asc()).all()\n    return render_template(\"admin_users.html\", users=all_users)\n# ---------------------------\n# ADD USER\n# ---------------------------\n@admin_bp.route(\"/add-user\", methods=[\"POST\"])",
         "detail": "routes.admin",
         "documentation": {}
     },
@@ -615,7 +615,7 @@
         "kind": 2,
         "importPath": "routes.admin",
         "description": "routes.admin",
-        "peekOfCode": "def add_user():\n    if not admin_only():\n        return redirect(url_for(\"dashboard.home\"))\n    username = request.form.get(\"username\").strip()\n    name = request.form.get(\"name\").strip()\n    role = request.form.get(\"role\")\n    password = request.form.get(\"password\").strip()\n    if User.query.filter_by(username=username).first():\n        flash(\"Username already exists.\")\n        return redirect(url_for(\"admin.users\"))",
+        "peekOfCode": "def add_user():\n    redirect_target = check_admin_or_redirect()\n    if redirect_target:\n        return redirect_target\n    username = request.form.get(\"username\", \"\").strip()\n    name = request.form.get(\"name\", \"\").strip()\n    role = request.form.get(\"role\")\n    password = request.form.get(\"password\", \"\").strip()\n    # Prevent crashing on empty values\n    if not username or not password:",
         "detail": "routes.admin",
         "documentation": {}
     },
@@ -624,7 +624,7 @@
         "kind": 2,
         "importPath": "routes.admin",
         "description": "routes.admin",
-        "peekOfCode": "def delete_user(user_id):\n    if not admin_only():\n        return redirect(url_for(\"dashboard.home\"))\n    user = User.query.get_or_404(user_id)\n    if user.role == \"admin\" and user.id == current_user.id:\n        flash(\"You cannot delete your own admin account.\")\n        return redirect(url_for(\"admin.users\"))\n    db.session.delete(user)\n    db.session.commit()\n    flash(\"User deleted successfully.\")",
+        "peekOfCode": "def delete_user(user_id):\n    redirect_target = check_admin_or_redirect()\n    if redirect_target:\n        return redirect_target\n    user = db.session.get(User, user_id) if hasattr(db.session, 'get') else User.query.get_or_404(user_id)\n    if not user:\n        flash(\"User not found.\")\n        return redirect(url_for(\"admin.users\"))\n    if user.role == \"admin\" and user.id == current_user.id:\n        flash(\"You cannot delete your own admin account.\")",
         "detail": "routes.admin",
         "documentation": {}
     },
@@ -633,7 +633,7 @@
         "kind": 2,
         "importPath": "routes.admin",
         "description": "routes.admin",
-        "peekOfCode": "def reset_password(user_id):\n    if not admin_only():\n        return redirect(url_for(\"dashboard.home\"))\n    new_password = request.form.get(\"new_password\").strip()\n    user = User.query.get_or_404(user_id)\n    user.password = generate_password_hash(new_password)\n    db.session.commit()\n    flash(\"Password reset successfully.\")\n    return redirect(url_for(\"admin.users\"))",
+        "peekOfCode": "def reset_password(user_id):\n    redirect_target = check_admin_or_redirect()\n    if redirect_target:\n        return redirect_target\n    # Defensive fallback prevents NoneType stripping error if field names disagree\n    raw_password = request.form.get(\"new_password\") or request.form.get(\"password\")\n    if not raw_password:\n        flash(\"Password field cannot be empty.\")\n        return redirect(url_for(\"admin.users\"))\n    new_password = raw_password.strip()",
         "detail": "routes.admin",
         "documentation": {}
     },
@@ -642,7 +642,7 @@
         "kind": 5,
         "importPath": "routes.admin",
         "description": "routes.admin",
-        "peekOfCode": "admin_bp = Blueprint(\"admin\", __name__, url_prefix=\"/admin\")\n# ---------------------------\n# ADMIN ACCESS ONLY\n# ---------------------------\ndef admin_only():\n    if current_user.role != \"admin\":\n        flash(\"Access denied. Admins only.\")\n        return False\n    return True\n# ---------------------------",
+        "peekOfCode": "admin_bp = Blueprint(\"admin\", __name__, url_prefix=\"/admin\")\n# ---------------------------\n# ADMIN ACCESS PROTECTION\n# ---------------------------\ndef check_admin_or_redirect():\n    \"\"\"Helper to enforce strict admin role checks reliably.\"\"\"\n    if not current_user.is_authenticated or current_user.role != \"admin\":\n        flash(\"Access denied. Admins only.\")\n        return redirect(url_for(\"dashboard.home\"))\n    return None",
         "detail": "routes.admin",
         "documentation": {}
     },
@@ -732,7 +732,7 @@
         "kind": 2,
         "importPath": "routes.messages",
         "description": "routes.messages",
-        "peekOfCode": "def chat_history(user_id):\n    other_user = User.query.get_or_404(user_id)\n    msgs = Message.query.filter(\n        ((Message.sender_id == current_user.id) & (Message.receiver_id == user_id)) |\n        ((Message.sender_id == user_id) & (Message.receiver_id == current_user.id))\n    ).order_by(Message.timestamp.asc()).all()\n    return jsonify([\n        {\n            \"id\": m.id,\n            \"sender\": m.sender_id,",
+        "peekOfCode": "def chat_history(user_id):\n    other_user = User.query.get_or_404(user_id)\n    # --- START OF ADJUSTMENT: ROLE-BASED PRIVACY RULES ---\n    # 1. Employee/Teacher Role Restrictions\n    if current_user.role == \"teacher\":\n        # Teachers can only see messages with Admins, other Teachers, or Parents\n        if other_user.role not in [\"admin\", \"teacher\", \"parent\"]:\n            return jsonify({\"error\": \"Access denied. Unauthorized conversation space.\"}), 403\n    # 2. Parent Role Restrictions\n    elif current_user.role == \"parent\":",
         "detail": "routes.messages",
         "documentation": {}
     },
@@ -741,7 +741,16 @@
         "kind": 2,
         "importPath": "routes.messages",
         "description": "routes.messages",
-        "peekOfCode": "def send_message():\n    data = request.json\n    receiver_id = data.get(\"receiver_id\")\n    content = data.get(\"content\")\n    if not receiver_id or not content:\n        return jsonify({\"error\": \"Missing fields\"}), 400\n    msg = Message(\n        sender_id=current_user.id,\n        receiver_id=receiver_id,\n        content=content,",
+        "peekOfCode": "def send_message():\n    data = request.json\n    receiver_id = data.get(\"receiver_id\")\n    content = data.get(\"content\")\n    if not receiver_id or not content:\n        return jsonify({\"error\": \"Missing fields\"}), 400\n    # Optional: You can replicate the same safety check here if needed to prevent \n    # unauthorized users from manually pushing a POST request to send data.\n    msg = Message(\n        sender_id=current_user.id,",
+        "detail": "routes.messages",
+        "documentation": {}
+    },
+    {
+        "label": "delete_message",
+        "kind": 2,
+        "importPath": "routes.messages",
+        "description": "routes.messages",
+        "peekOfCode": "def delete_message(message_id):\n    msg = Message.query.get_or_404(message_id)\n    # Security check: Only allow the sender to delete their own message\n    if msg.sender_id != current_user.id:\n        return jsonify({\"error\": \"Unauthorized action\"}), 403\n    db.session.delete(msg)\n    db.session.commit()\n    return jsonify({\"success\": True})",
         "detail": "routes.messages",
         "documentation": {}
     },
@@ -750,7 +759,7 @@
         "kind": 5,
         "importPath": "routes.messages",
         "description": "routes.messages",
-        "peekOfCode": "messages_bp = Blueprint(\"messages\", __name__, url_prefix=\"/messages\")\n# ---------------------------\n# GET CHAT HISTORY\n# ---------------------------\n@messages_bp.route(\"/history/<int:user_id>\")\n@login_required\ndef chat_history(user_id):\n    other_user = User.query.get_or_404(user_id)\n    msgs = Message.query.filter(\n        ((Message.sender_id == current_user.id) & (Message.receiver_id == user_id)) |",
+        "peekOfCode": "messages_bp = Blueprint(\"messages\", __name__, url_prefix=\"/messages\")\n# ---------------------------\n# GET CHAT HISTORY\n# ---------------------------\n@messages_bp.route(\"/history/<int:user_id>\")\n@login_required\ndef chat_history(user_id):\n    other_user = User.query.get_or_404(user_id)\n    # --- START OF ADJUSTMENT: ROLE-BASED PRIVACY RULES ---\n    # 1. Employee/Teacher Role Restrictions",
         "detail": "routes.messages",
         "documentation": {}
     },
@@ -791,11 +800,29 @@
         "documentation": {}
     },
     {
+        "label": "app",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "app = create_app()\nif __name__ == \"__main__\":\n    app.run(debug=True, port=5000)",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
         "label": "Config",
         "kind": 6,
         "importPath": "config",
         "description": "config",
-        "peekOfCode": "class Config:\n    SECRET_KEY = \"educonnect_super_secret_key\"\n    SQLALCHEMY_DATABASE_URI = \"sqlite:///educonnect.db\"\n    SQLALCHEMY_TRACK_MODIFICATIONS = False",
+        "peekOfCode": "class Config:\n    SECRET_KEY = \"educonnect_super_secret_key\"\n    # Securely point directly to the database file inside the instance folder\n    SQLALCHEMY_DATABASE_URI = \"sqlite:///\" + os.path.join(basedir, \"instance\", \"educonnect.db\")\n    SQLALCHEMY_TRACK_MODIFICATIONS = False",
+        "detail": "config",
+        "documentation": {}
+    },
+    {
+        "label": "basedir",
+        "kind": 5,
+        "importPath": "config",
+        "description": "config",
+        "peekOfCode": "basedir = os.path.abspath(os.path.dirname(__file__))\nclass Config:\n    SECRET_KEY = \"educonnect_super_secret_key\"\n    # Securely point directly to the database file inside the instance folder\n    SQLALCHEMY_DATABASE_URI = \"sqlite:///\" + os.path.join(basedir, \"instance\", \"educonnect.db\")\n    SQLALCHEMY_TRACK_MODIFICATIONS = False",
         "detail": "config",
         "documentation": {}
     },
