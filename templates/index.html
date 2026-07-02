@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    
     <title>EduConnect Dashboard</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
@@ -15,6 +14,8 @@
                 background: #ffffff !important;
                 display: block !important;
                 min-height: 100vh !important;
+                margin: 0 !important;
+                padding: 0 !important;
             }
             .device-frame {
                 padding: 0 !important;
@@ -23,12 +24,16 @@
                 width: 100vw !important;
                 height: 100vh !important;
                 box-shadow: none !important;
+                background: transparent !important;
+                transform: none !important;
             }
             .app-container {
                 border-radius: 0 !important;
                 width: 100vw !important;
                 height: 100vh !important;
                 max-height: 100vh !important;
+                min-height: 100vh !important;
+                margin: 0 !important;
             }
         }
     </style>
