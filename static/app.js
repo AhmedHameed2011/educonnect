@@ -426,3 +426,28 @@ function renderCalendar(calendarDate = new Date()) {
 
 // Initialize calendar controls after DOM load
 document.addEventListener('DOMContentLoaded', initCalendarControls);
+
+// كود الإخفاء التلقائي الفوري لرسائل التنبيه الحمراء
+document.addEventListener("DOMContentLoaded", function() {
+    const messages = document.querySelectorAll('.flash-message');
+    
+    messages.forEach(function(msg) {
+        // 1. بعد ثانيتين ونصف يبدأ التأثير البصري للاختفاء (Fade out)
+        setTimeout(function() {
+            msg.style.opacity = '0';
+            msg.style.transform = 'translateY(-10px)';
+            msg.style.transition = 'all 0.5s ease';
+        }, 2500);
+
+        // 2. بعد 3 ثوانٍ يتم مسح الحاوية تماماً من الشاشة لكي لا تحجب أي زر خلفها
+        setTimeout(function() {
+            msg.remove();
+            
+            // إذا كانت الحاوية الرئيسية فارغة تماماً، قم بإخفائها أيضاً
+            const container = document.getElementById('flashMessages');
+            if (container && container.children.length === 0) {
+                container.remove();
+            }
+        }, 3000);
+    });
+});
