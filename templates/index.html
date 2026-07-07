@@ -1,202 +1,291 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ current_lang }}" dir="{{ page_direction }}">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>EduConnect Dashboard</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ _('app_title') }}</title>
+    <style>
+        :root {
+            --primary-color: #6366f1;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-color: #1e293b;
+            --border-color: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            padding: 20px;
+        }
+
+        /* شريط الملاحة العلوي المتجاوب */
+        .navbar {
+            background-color: var(--card-bg);
+            padding: 15px 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* تنسيق زر تبديل اللغة الاحترافي */
+        .btn-lang {
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 600;
+            padding: 6px 14px;
+            border: 2px solid var(--primary-color);
+            border-radius: 20px;
+            font-size: 13px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-lang:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-logout {
+            background-color: #ef4444;
+            color: white;
+            padding: 6px 14px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 13px;
+        }
+
+        /* شبكة المحتوى المتجاوبة للهواتف */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.01);
+        }
+
+        .card h2 {
+            margin-bottom: 15px;
+            font-size: 18px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 8px;
+        }
+
+        /* محاذاة مرنة للنصوص بناء على اتجاه اللغة المختار */
+        html[dir="rtl"] .text-align-dir { text-align: right; }
+        html[dir="ltr"] .text-align-dir { text-align: left; }
+
+        /* نموذج تسجيل مستخدم جديد */
+        .form-group {
+            margin-bottom: 12px;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            outline: none;
+        }
+
+        .btn-submit {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* جدول إدارة الحسابات */
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            background: var(--card-bg);
+        }
+
+        th, td {
+            padding: 12px 15px;
+            border-bottom: 1px solid var(--border-color);
+            text-align: inherit; /* يتغير تلقائياً مع اتجاه الصفحة */
+        }
+
+        th {
+            background-color: #f1f5f9;
+            font-weight: 600;
+        }
+
+        .badge {
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        .badge-admin { background-color: #e0e7ff; color: #4338ca; }
+        .badge-teacher { background-color: #ffedd5; color: #c2410c; }
+        .badge-student { background-color: #dcfce7; color: #15803d; }
+
+        .action-btn {
+            padding: 5px 10px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 12px;
+            display: inline-block;
+            margin: 2px;
+        }
+        .btn-pwd { background-color: #fef08a; color: #854d0e; }
+        .btn-del { background-color: #fee2e2; color: #991b1b; }
+        
+        .current-user-tag {
+            font-size: 12px;
+            color: #64748b;
+            font-style: italic;
+        }
+    </style>
 </head>
 <body>
-    {% with messages = get_flashed_messages() %}
-      {% if messages %}
-        <div id="flashMessages" class="flash-messages-container">
-          {% for message in messages %}
-            <div class="flash-message">{{ message }}</div>
-          {% endfor %}
-        </div>
-      {% endif %}
-    {% endwith %}
 
-    <div class="app-container">
-        <header class="app-header glass-panel">
-            <div class="user-info">
-                {% if current_user.avatar %}
-                <div class="avatar">
-                    <img src="{{ current_user.avatar }}" alt="Avatar">
-                </div>
-                {% else %}
-                <div class="school-avatar">
-                    {{ current_user.name[0] }}
-                </div>
-                {% endif %}
-                <div>
-                    <div class="user-name">{{ current_user.name }}</div>
-                    <button id="currentRole" class="user-role">
-                        {{ current_user.role|capitalize }}
-                        <i class="fa-solid fa-chevron-down"></i>
-                    </button>
-                </div>
-            </div>
-            <button class="icon-btn" onclick="window.location.href='{{ url_for('auth.logout') }}'">
-                <i class="fa-solid fa-right-from-bracket"></i>
-            </button>
-            {% if current_user.role == "admin" %}
-            <button class="icon-btn" onclick="window.location.href='{{ url_for('admin.users') }}'">
-                <i class="fa-solid fa-user-gear"></i>
-            </button>
+    <!-- شريط الملاحة والتحكم باللغات والخروج -->
+    <nav class="navbar">
+        <h2>{{ _('app_title') }}</h2>
+        <div class="nav-controls">
+            <span>{{ current_user.full_name }} ({{ _(current_user.role) }})</span>
+            
+            <!-- زر تبديل اللغة المنفصل والديناميكي -->
+            {% if current_lang == 'ar' %}
+                <a href="{{ url_for('set_language', lang='en') }}" class="btn-lang">English</a>
+            {% else %}
+                <a href="{{ url_for('set_language', lang='ar') }}" class="btn-lang">عربي</a>
             {% endif %}
-        </header>
-
-        <main class="main-content">
-            <section id="view-messages" class="view active">
-                <h2 class="view-title">Messages</h2>
-                <div class="search-bar">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    <input type="text" placeholder="Search contacts">
-                </div>
-                <div class="chat-list" id="chatList">
-                    {% for user in users %}
-                    <div class="chat-item" onclick="openChat({{ user.id }}, '{{ user.name }}')">
-                        <div class="avatar">
-                            {% if user.avatar %}
-                            <img src="{{ user.avatar }}" alt="Avatar">
-                            {% else %}
-                            <div class="school-avatar">{{ user.name[0] }}</div>
-                            {% endif %}
-                        </div>
-                        <div class="chat-details">
-                            <div class="chat-header">
-                                <h3>{{ user.name }}</h3>
-                                <span class="time">—</span>
-                            </div>
-                            <p class="last-message">Tap to open conversation</p>
-                        </div>
-                    </div>
-                    {% endfor %}
-                </div>
-            </section>
-
-            <section id="view-notifications" class="view">
-                <h2 class="view-title">Notifications</h2>
-                <div id="notificationList" class="notification-list">
-                    {% for n in notifications %}
-                    <div class="glass-panel" style="padding: 16px; border-radius: 16px; margin-bottom: 12px;">
-                        <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
-                            <h3 style="font-size:14px; font-weight:600;">{{ n.title }}</h3>
-                            <span style="font-size:11px; color:var(--text-muted);">
-                                {{ n.timestamp.strftime('%Y-%m-%d %H:%M') }}
-                            </span>
-                        </div>
-                        <p style="font-size:13px; line-height:1.4;">{{ n.content }}</p>
-                    </div>
-                    {% endfor %}
-                </div>
-
-                <div style="margin-top:16px;">
-                    <h3 style="font-size:14px; margin-bottom:8px;">Broadcast new notification</h3>
-                    <input id="broadcastTitle" class="form-input" placeholder="Title">
-                    <textarea id="broadcastContent" class="form-input" placeholder="Message" style="height:80px;"></textarea>
-                    <select id="broadcastPriority" class="form-input">
-                        <option value="normal">Normal</option>
-                        <option value="high">High priority</option>
-                    </select>
-                    <button id="broadcastBtn" class="login-btn">Send Broadcast</button>
-                </div>
-            </section>
-
-            <section id="view-calendar" class="view">
-                <h2 class="view-title">Calendar</h2>
-                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
-                    <button id="prevMonth" class="icon-btn"><i class="fa-solid fa-chevron-left"></i></button>
-                    <div id="monthYear" style="font-weight:600;"></div>
-                    <button id="nextMonth" class="icon-btn"><i class="fa-solid fa-chevron-right"></i></button>
-                </div>
-                <div id="calendarGrid" style="display:grid; grid-template-columns:repeat(7,1fr); gap:4px;"></div>
-
-                <div style="margin-top:16px;">
-                    <h3 style="font-size:14px; margin-bottom:8px;">Add Event</h3>
-                    <input id="eventTitle" class="form-input" placeholder="Event title">
-                    <input id="eventDate" class="form-input" type="date">
-                    <button id="addEventBtn" class="login-btn">Add Event</button>
-                </div>
-
-                <div style="margin-top:16px;">
-                    <h3 style="font-size:14px; margin-bottom:8px;">This Month</h3>
-                    <div id="eventList"></div>
-                </div>
-            </section>
-        </main>
-
-        <nav class="bottom-nav glass-panel">
-            <button class="nav-item active" data-target="view-messages">
-                <i class="fa-solid fa-comments"></i>
-                <span>Messages</span>
-            </button>
-            <button class="nav-item" data-target="view-notifications">
-                <i class="fa-solid fa-bell"></i>
-                <span>Alerts</span>
-            </button>
-            <button class="nav-item" data-target="view-calendar">
-                <i class="fa-solid fa-calendar-days"></i>
-                <span>Calendar</span>
-            </button>
-        </nav>
-
-        <div id="chatScreen" class="chat-screen">
-            <div class="chat-header-bar glass-panel" style="display: flex; align-items: center; padding: 10px 16px;">
-                <button class="icon-btn" onclick="closeChat()" style="background: none; border: none; cursor: pointer; margin-right: 12px; display: flex; align-items: center; justify-content: center;">
-                    <i class="fa-solid fa-chevron-left" style="font-size: 20px; color: #2d3748 !important;"></i>
-                </button>
-                <div class="active-chat-info">
-                    <h2 id="activeChatName" style="margin: 0; font-size: 16px; font-weight: 600;">Chat</h2>
-                    <p style="margin: 2px 0 0 0; color: #10b981; font-size: 12px;">Connected</p>
-                </div>
-            </div>
             
-            <div id="chatMessages" class="chat-messages"></div>
-            
-            <div class="chat-input-area" style="display: flex; align-items: center; gap: 8px; padding: 12px 16px;">
-                <button id="attachBtn" class="icon-btn" style="background: none; border: none; cursor: pointer;">
-                    <i class="fa-solid fa-paperclip" style="font-size: 18px; color: #718096;"></i>
-                </button>
-                <input id="messageInput" type="text" placeholder="Type a message...">
-                <button id="sendBtn" class="icon-btn send-btn">
-                    <i class="fa-solid fa-paper-plane" style="color: #ffffff !important; font-size: 16px;"></i>
-                </button>
-                
-                <div id="attachmentMenu" class="attachment-menu">
-                    <div class="attach-option" onclick="simulateAttach('pdf')">
-                        <div class="attach-icon bg-blue"><i class="fa-solid fa-file-pdf"></i></div>
-                        <span>PDF</span>
-                    </div>
-                    <div class="attach-option" onclick="simulateAttach('doc')">
-                        <div class="attach-icon bg-purple"><i class="fa-solid fa-file-lines"></i></div>
-                        <span>Document</span>
-                    </div>
-                    <div class="attach-option" onclick="simulateAttach('image')">
-                        <div class="attach-icon bg-pink"><i class="fa-solid fa-image"></i></div>
-                        <span>Image</span>
-                    </div>
-                </div>
-            </div>
+            <a href="{{ url_for('logout') }}" class="btn-logout">{{ _('logout') }}</a>
         </div>
-            
-        <div id="roleModal" class="modal-overlay">
-            <div class="modal-content">
-                <h2>Current Role</h2>
-                <button class="role-option active">
-                    <i class="fa-solid fa-user-shield"></i>
-                    {{ current_user.role|capitalize }}
-                </button>
+    </nav>
+
+    <!-- شبكة المحتوى المتجاوبة -->
+    <div class="dashboard-grid">
+        
+        <!-- كارت المحادثات الفورية -->
+        <div class="card">
+            <h2>💬 {{ _('chats') }}</h2>
+            <div class="form-group">
+                <input type="text" placeholder="{{ _('search_placeholder') }}">
             </div>
+            <p style="color: #64748b; font-size: 14px; margin-top: 15px;">{{ _('click_to_chat') }}</p>
+        </div>
+
+        <!-- كارت التنبيهات الإدارية -->
+        <div class="card">
+            <h2>📢 {{ _('alerts') }}</h2>
+            <div style="padding: 15px; background: #fff5f5; border-left: 4px solid #ef4444; border-radius: 4px; margin-bottom: 10px;">
+                <strong>{{ _('admin_alert_title') }}:</strong>
+                <p style="font-size: 14px; margin-top: 5px;">يرجى العلم أن اختبارات منتصف الفصل الدراسي ستبدأ الأسبوع القادم.</p>
+            </div>
+            <button class="btn-submit" style="background-color: #34d399; margin-top: 10px;">+ {{ _('add_alert_btn') }}</button>
+        </div>
+
+        <!-- كارت التقويم الدراسي -->
+        <div class="card">
+            <h2>📅 {{ _('calendar') }}</h2>
+            <p style="color: #64748b; font-size: 14px; margin-bottom: 15px;">{{ _('no_events') }}</p>
+            <button class="btn-submit" style="background-color: #60a5fa;">+ {{ _('add_event_btn') }}</button>
+        </div>
+
+    </div>
+
+    <!-- قسم إدارة وانشاء الحسابات (يظهر للمسؤولين فقط بشكل منسق ولغتين) -->
+    <div class="card">
+        <h2>👥 {{ _('admin_panel') }}</h2>
+        
+        <!-- نموذج الإنشاء السريع المتجاوب -->
+        <form action="{{ url_for('register') }}" method="POST" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; align-items: end; margin-bottom: 25px;">
+            <div class="form-group">
+                <input type="text" name="username" placeholder="{{ _('username') }}" required>
+            </div>
+            <div class="form-group">
+                <input type="text" name="full_name" placeholder="{{ _('full_name') }}" required>
+            </div>
+            <div class="form-group">
+                <input type="password" name="password" placeholder="كلمة المرور" required>
+            </div>
+            <div class="form-group">
+                <select name="role">
+                    <option value="student">{{ _('student') }}</option>
+                    <option value="teacher">{{ _('teacher') }}</option>
+                    <option value="admin">{{ _('admin') }}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn-submit">{{ _('save_btn') }}</button>
+            </div>
+        </form>
+
+        <!-- جدول عرض الحسابات النشطة المترجم بالكامل -->
+        <h3>📋 {{ _('current_accounts') }}</h3>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>{{ _('full_name') }}</th>
+                        <th>{{ _('username') }}</th>
+                        <th>{{ _('role') }}</th>
+                        <th>{{ _('actions') }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for u in users %}
+                    <tr>
+                        <strong><td>{{ u.full_name }}</td></strong>
+                        <td>{{ u.username }}</td>
+                        <td>
+                            <span class="badge badge-{{ u.role }}">{{ _(u.role) }}</span>
+                        </td>
+                        <td>
+                            {% if u.id == current_user.id %}
+                                <span class="current-user-tag">{{ _('current_account_indicator') }}</span>
+                            {% else %}
+                                <a href="{{ url_for('reset_password', user_id=u.id) }}" class="action-btn btn-pwd">🔑 {{ _('set_password') }}</a>
+                                {% if current_user.role == 'admin' %}
+                                    <a href="{{ url_for('delete_user', user_id=u.id) }}" class="action-btn btn-del">🗑️ {{ _('delete') }}</a>
+                                {% endif %}
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
         </div>
     </div>
 
-    <script>
-        const CURRENT_USER_ID = {{ current_user.id }};
-    </script>
-    <script src="{{ url_for('static', filename='app.js') }}"></script>
 </body>
 </html>

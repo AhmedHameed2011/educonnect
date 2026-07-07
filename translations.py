@@ -1,0 +1,40 @@
+# translations.py
+
+TRANSLATIONS = {
+    'ar': {
+        'app_title': 'إيدو كونيكت',
+        'logout': 'تسجيل الخروج',
+        'chats': 'المحادثات',
+        'alerts': 'التنبيهات',
+        'calendar': 'التقويم الدراسي',
+        'admin_panel': 'إدارة المستخدمين',
+        'search_placeholder': 'البحث عن جهة اتصال...',
+        'click_to_chat': 'اضغط لبدء المحادثة',
+        'send_btn': 'إرسال',
+        'type_msg_placeholder': 'اكتب رسالتك هنا...',
+        'admin_alert_title': 'تنبيه إداري عاجل',
+        'no_alerts': 'لا توجد تنبيهات حالياً',
+        'no_events': 'لا توجد فعاليات في التقويم حالياً',
+        'add_alert_btn': 'إضافة تنبيه جديد',
+        'add_event_btn': 'إضافة حدث للتقويم',
+        'save_btn': 'حفظ وإنشاء',
+    },
+    'en': {
+        'app_title': 'EduConnect',
+        'logout': 'Logout',
+        'chats': 'Chats',
+        'alerts': 'Alerts',
+        'calendar': 'Academic Calendar',
+        'admin_panel': 'User Management',
+        'search_placeholder': 'Search for a contact...',
+        'click_to_chat': 'Click to start chat',
+        'send_btn': 'Send',
+        'type_msg_placeholder': 'Type your message here...',
+        'admin_alert_title': 'Urgent Admin Alert',
+        'no_alerts': 'No alerts available currently',
+        'no_events': 'No events in calendar currently',
+        'add_alert_btn': 'Add New Alert',
+        'add_event_btn': 'Add Calendar Event',
+        'save_btn': 'Save & Create',
+    }
+}

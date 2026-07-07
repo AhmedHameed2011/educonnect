@@ -21,8 +21,6 @@
     --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-/* Dark mode overrides (optional if we wanted to support it based on OS preference, but let's stick to a clean, bright, premium UI first) */
-
 * {
     margin: 0;
     padding: 0;
@@ -43,28 +41,21 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    padding: 20px;
 }
 
-/* Mobile App Container */
+/* الحاوية الأساسية: مخصصة للظهور كشاشة هاتف محددة على الكمبيوتر */
 .app-container {
-    width: 100%;
-    max-width: 414px; /* iPhone Max width */
-    height: 100vh;
-    max-height: 896px;
+    width: 414px; /* تحديد العرض الثابت لمحاكاة الجوال على الكمبيوتر */
+    height: 840px; /* تحديد الارتفاع الثابت المناسب */
     background-color: var(--bg-color);
     position: relative;
     overflow: hidden;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
     display: flex;
     flex-direction: column;
-}
-
-@media (min-width: 415px) {
-    .app-container {
-        height: 90vh;
-        border-radius: 40px;
-        border: 8px solid #000;
-    }
+    border-radius: 40px;
+    border: 8px solid #000000; /* إطار هاتف أسود فخم يحيط بالتطبيق */
 }
 
 /* Glass Panel Utility */
@@ -721,7 +712,6 @@ body {
     margin-bottom: 0.75rem;
 }
 
-/* Base style for the badge layers */
 .logo-badge {
     position: absolute;
     border-radius: 50%;
@@ -732,7 +722,6 @@ body {
     transition: transform 0.3s ease;
 }
 
-/* Top Badge: Graduation Cap */
 .cap-badge {
     width: 55px;
     height: 55px;
@@ -744,20 +733,18 @@ body {
     z-index: 2;
 }
 
-/* Bottom/Overlapping Badge: Communications Node */
 .chat-badge {
     width: 45px;
     height: 45px;
-    background: linear-gradient(135deg, #059669, #047857); /* Growth green accent matching the concept */
+    background: linear-gradient(135deg, #059669, #047857);
     color: #ffffff;
     font-size: 18px;
     bottom: 0;
     right: 0;
     z-index: 1;
-    border: 3px solid #ffffff; /* Creates the distinct interlocking separation cutout */
+    border: 3px solid #ffffff;
 }
 
-/* Typography Link */
 .logo-text {
     font-size: 28px;
     font-weight: 700;
@@ -767,10 +754,9 @@ body {
 }
 
 .logo-text span {
-    color: #4f46e5; /* Accentuate the 'Connect' with Deep Indigo */
+    color: #4f46e5;
 }
 
-/* Subtle Hover Animation */
 .logo-container:hover .cap-badge {
     transform: translateY(-2px) rotate(-5deg);
 }
@@ -778,94 +764,22 @@ body {
     transform: translate(2px, 2px) scale(1.05);
 }
 
-
 /* =================================================================
-   التحكم في العرض: إطار هاتف على الكمبيوتر وشاشة كاملة على الجوال
-   ================================================================= */
-
-/* التصميم الافتراضي للكمبيوتر (Desktop) */
-.device-frame {
-    background: #000000;
-    padding: 12px;
-    border-radius: 48px;
-    width: 100%;
-    max-width: 420px; /* عرض محاكي الهاتف */
-    height: 860px;    /* طول محاكي الهاتف */
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-sizing: border-box;
-}
-
-.app-container {
-    width: 100% !important;
-    height: 100% !important;
-    max-width: 100% !important;
-    max-height: 100% !important;
-    border-radius: 36px !important; /* انحناء داخلي متناسق مع الإطار */
-    overflow: hidden;
-    position: relative;
-    background-color: var(--bg-color);
-}
-
-/* =================================================================
-   تنسيقات رسائل التنبيه المؤقتة (Flash Messages)
-   ================================================================= */
-.flash-messages-container {
-    position: fixed;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 10000;
-    width: 90%;
-    max-width: 360px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    pointer-events: none;
-}
-
-.flash-message {
-    background: #fef2f2;
-    color: #ef4444;
-    border: 1px solid rgba(239, 68, 68, 0.2);
-    padding: 12px 16px;
-    border-radius: 12px;
-    font-size: 14px;
-    font-weight: 500;
-    text-align: center;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-    pointer-events: auto;
-}
-
-.flash-message.fade-out {
-    opacity: 0;
-    transform: translate(-50%, -20px);
-}
-
-/* =================================================================
-   التحكم الكامل والنهائي في شاشات الهواتف المحمولة وتجنب الانقسام
+   COMPLETE MOBILE OVERRIDE FOR ALL INTERNAL SCREENS
    ================================================================= */
 @media (max-width: 480px) {
     body {
-        background: #ffffff !important;
-        display: flex !important;
         align-items: stretch !important;
         justify-content: flex-start !important;
         min-height: 100vh !important;
-        margin: 0 !important;
+        background: #ffffff !important;
         padding: 0 !important;
-        overflow: hidden;
     }
 
-    /* إلغاء الإطار الأسود تماماً والمحاكاة لملء الشاشة الحقيقية */
     .app-container {
         border-radius: 0 !important;
         border: none !important;
         width: 100vw !important;
-        max-width: 100vw !important;
         height: 100vh !important;
         max-height: 100vh !important;
         min-height: 100vh !important;
@@ -874,15 +788,6 @@ body {
         top: 0 !important;
         left: 0 !important;
         box-shadow: none !important;
-        display: flex !important;
-        flex-direction: column !important;
-    }
-
-    .main-content {
-        flex: 1 !important;
-        overflow-y: auto !important;
-        padding: 16px !important;
-        height: calc(100vh - 140px) !important;
     }
 
     .chat-screen {
@@ -893,11 +798,15 @@ body {
         height: 100vh !important;
         border-radius: 0 !important;
         z-index: 9999 !important;
-        transition: left 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
     }
 
     .chat-screen.open {
         left: 0 !important;
+    }
+
+    .app-header {
+        border-radius: 0 !important;
+        padding: 12px 16px !important;
     }
 
     .bottom-nav {
