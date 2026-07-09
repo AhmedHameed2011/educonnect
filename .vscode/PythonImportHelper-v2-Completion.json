@@ -600,6 +600,14 @@
         "documentation": {}
     },
     {
+        "label": "TRANSLATIONS",
+        "importPath": "translations",
+        "description": "translations",
+        "isExtraImport": true,
+        "detail": "translations",
+        "documentation": {}
+    },
+    {
         "label": "os",
         "kind": 6,
         "isExtraImport": true,
@@ -844,7 +852,25 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def load_user(user_id):\n    return db.session.get(User, int(user_id))\nclass User(db.Model, UserMixin):\n    id = db.Column(db.Integer, primary_key=True)\n    username = db.Column(db.String(150), unique=True, nullable=False)\n    password = db.Column(db.String(150), nullable=False)\n    name = db.Column(db.String(150), nullable=False)\n    role = db.Column(db.String(50), nullable=False, default='student')\n@app.route('/')\n@login_required",
+        "peekOfCode": "def load_user(user_id):\n    return db.session.get(User, int(user_id))\n# =========================================================\n# 📍 هــنــا الـمـكـان الـصـحـيـح لـلـدالـة (أسفل إعدادات الـ db والـ login_manager)\n# =========================================================\n@app.context_processor\ndef inject_global_vars():\n    lang = session.get('lang', 'ar')  # العربية هي اللغة الافتراضية دائماً\n    return {\n        'lang': lang,",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "inject_global_vars",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def inject_global_vars():\n    lang = session.get('lang', 'ar')  # العربية هي اللغة الافتراضية دائماً\n    return {\n        'lang': lang,\n        'dir': 'rtl' if lang == 'ar' else 'ltr',\n        't': TRANSLATIONS[lang]\n    }\n# 💡 مسار تغيير اللغة الآمن (تم إصلاح مسافات التعليق البرمجي هنا)\n@app.route('/set_language/<string:lang_code>')\ndef set_language(lang_code):",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "set_language",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def set_language(lang_code):\n    if lang_code in ['ar', 'en']:\n        session['lang'] = lang_code\n    return redirect(request.referrer or url_for('index'))\nclass User(db.Model, UserMixin):\n    id = db.Column(db.Integer, primary_key=True)\n    username = db.Column(db.String(150), unique=True, nullable=False)\n    password = db.Column(db.String(150), nullable=False)\n    name = db.Column(db.String(150), nullable=False)\n    role = db.Column(db.String(50), nullable=False, default='student')",
         "detail": "app",
         "documentation": {}
     },
@@ -880,7 +906,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def admin_users_management():\n    if current_user.role.lower() != 'admin':\n        flash('غير مصرح لك بإجراء هذه العملية', 'danger')\n        return redirect(url_for('index'))\n    if request.method == 'GET':\n        all_users = User.query.all()\n        # 💡 تم الإصلاح هنا: استدعاء ملف إدارة المستخدمين المستقل\n        return render_template('admin_users.html', all_users=all_users)\n    username = request.form.get('username')\n    name = request.form.get('name')",
+        "peekOfCode": "def admin_users_management():\n    if current_user.role.lower() != 'admin':\n        flash('غير مصرح لك بإجراء هذه العملية', 'danger')\n        return redirect(url_for('index'))\n    if request.method == 'GET':\n        all_users = User.query.all()\n        return render_template('admin_users.html', all_users=all_users)\n    username = request.form.get('username')\n    name = request.form.get('name')\n    password = request.form.get('password')",
         "detail": "app",
         "documentation": {}
     },
@@ -934,7 +960,7 @@
         "kind": 5,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{os.path.join(BASE_DIR, \"educonnect.db\")}'\napp.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False\ndb = SQLAlchemy(app)\nlogin_manager = LoginManager()\nlogin_manager.init_app(app)\nlogin_manager.login_view = 'login'\n@login_manager.user_loader\ndef load_user(user_id):\n    return db.session.get(User, int(user_id))\nclass User(db.Model, UserMixin):",
+        "peekOfCode": "app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{os.path.join(BASE_DIR, \"educonnect.db\")}'\napp.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False\ndb = SQLAlchemy(app)\nlogin_manager = LoginManager()\nlogin_manager.init_app(app)\nlogin_manager.login_view = 'login'\n@login_manager.user_loader\ndef load_user(user_id):\n    return db.session.get(User, int(user_id))\n# =========================================================",
         "detail": "app",
         "documentation": {}
     },
@@ -943,7 +969,7 @@
         "kind": 5,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False\ndb = SQLAlchemy(app)\nlogin_manager = LoginManager()\nlogin_manager.init_app(app)\nlogin_manager.login_view = 'login'\n@login_manager.user_loader\ndef load_user(user_id):\n    return db.session.get(User, int(user_id))\nclass User(db.Model, UserMixin):\n    id = db.Column(db.Integer, primary_key=True)",
+        "peekOfCode": "app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False\ndb = SQLAlchemy(app)\nlogin_manager = LoginManager()\nlogin_manager.init_app(app)\nlogin_manager.login_view = 'login'\n@login_manager.user_loader\ndef load_user(user_id):\n    return db.session.get(User, int(user_id))\n# =========================================================\n# 📍 هــنــا الـمـكـان الـصـحـيـح لـلـدالـة (أسفل إعدادات الـ db والـ login_manager)",
         "detail": "app",
         "documentation": {}
     },
@@ -952,7 +978,7 @@
         "kind": 5,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "db = SQLAlchemy(app)\nlogin_manager = LoginManager()\nlogin_manager.init_app(app)\nlogin_manager.login_view = 'login'\n@login_manager.user_loader\ndef load_user(user_id):\n    return db.session.get(User, int(user_id))\nclass User(db.Model, UserMixin):\n    id = db.Column(db.Integer, primary_key=True)\n    username = db.Column(db.String(150), unique=True, nullable=False)",
+        "peekOfCode": "db = SQLAlchemy(app)\nlogin_manager = LoginManager()\nlogin_manager.init_app(app)\nlogin_manager.login_view = 'login'\n@login_manager.user_loader\ndef load_user(user_id):\n    return db.session.get(User, int(user_id))\n# =========================================================\n# 📍 هــنــا الـمـكـان الـصـحـيـح لـلـدالـة (أسفل إعدادات الـ db والـ login_manager)\n# =========================================================",
         "detail": "app",
         "documentation": {}
     },
@@ -961,7 +987,7 @@
         "kind": 5,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "login_manager = LoginManager()\nlogin_manager.init_app(app)\nlogin_manager.login_view = 'login'\n@login_manager.user_loader\ndef load_user(user_id):\n    return db.session.get(User, int(user_id))\nclass User(db.Model, UserMixin):\n    id = db.Column(db.Integer, primary_key=True)\n    username = db.Column(db.String(150), unique=True, nullable=False)\n    password = db.Column(db.String(150), nullable=False)",
+        "peekOfCode": "login_manager = LoginManager()\nlogin_manager.init_app(app)\nlogin_manager.login_view = 'login'\n@login_manager.user_loader\ndef load_user(user_id):\n    return db.session.get(User, int(user_id))\n# =========================================================\n# 📍 هــنــا الـمـكـان الـصـحـيـح لـلـدالـة (أسفل إعدادات الـ db والـ login_manager)\n# =========================================================\n@app.context_processor",
         "detail": "app",
         "documentation": {}
     },
@@ -970,7 +996,7 @@
         "kind": 5,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "login_manager.login_view = 'login'\n@login_manager.user_loader\ndef load_user(user_id):\n    return db.session.get(User, int(user_id))\nclass User(db.Model, UserMixin):\n    id = db.Column(db.Integer, primary_key=True)\n    username = db.Column(db.String(150), unique=True, nullable=False)\n    password = db.Column(db.String(150), nullable=False)\n    name = db.Column(db.String(150), nullable=False)\n    role = db.Column(db.String(50), nullable=False, default='student')",
+        "peekOfCode": "login_manager.login_view = 'login'\n@login_manager.user_loader\ndef load_user(user_id):\n    return db.session.get(User, int(user_id))\n# =========================================================\n# 📍 هــنــا الـمـكـان الـصـحـيـح لـلـدالـة (أسفل إعدادات الـ db والـ login_manager)\n# =========================================================\n@app.context_processor\ndef inject_global_vars():\n    lang = session.get('lang', 'ar')  # العربية هي اللغة الافتراضية دائماً",
         "detail": "app",
         "documentation": {}
     },

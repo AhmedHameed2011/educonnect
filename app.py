@@ -1,3 +1,4 @@
+from translations import TRANSLATIONS
 import os
 from flask import Flask, render_template, request, redirect, url_for, flash, session
 from flask_sqlalchemy import SQLAlchemy
@@ -19,6 +20,27 @@ login_manager.login_view = 'login'
 @login_manager.user_loader
 def load_user(user_id):
     return db.session.get(User, int(user_id))
+
+
+# =========================================================
+# 📍 هــنــا الـمـكـان الـصـحـيـح لـلـدالـة (أسفل إعدادات الـ db والـ login_manager)
+# =========================================================
+@app.context_processor
+def inject_global_vars():
+    lang = session.get('lang', 'ar')  # العربية هي اللغة الافتراضية دائماً
+    return {
+        'lang': lang,
+        'dir': 'rtl' if lang == 'ar' else 'ltr',
+        't': TRANSLATIONS[lang]
+    }
+
+# 💡 مسار تغيير اللغة الآمن (تم إصلاح مسافات التعليق البرمجي هنا)
+@app.route('/set_language/<string:lang_code>')
+def set_language(lang_code):
+    if lang_code in ['ar', 'en']:
+        session['lang'] = lang_code
+    return redirect(request.referrer or url_for('index'))
+
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
@@ -68,7 +90,6 @@ def admin_users_management():
         
     if request.method == 'GET':
         all_users = User.query.all()
-        # 💡 تم الإصلاح هنا: استدعاء ملف إدارة المستخدمين المستقل
         return render_template('admin_users.html', all_users=all_users)
         
     username = request.form.get('username')
@@ -85,7 +106,7 @@ def admin_users_management():
         db.session.commit()
         flash('تم إنشاء الحساب بنجاح', 'success')
         
-    return redirect(url_for('admin_add_user'))
+    return redirect(url_for('admin_users_management'))
 
 @app.route('/admin/delete_user/<int:user_id>')
 @login_required
@@ -103,7 +124,7 @@ def admin_delete_user(user_id):
             db.session.commit()
             flash('تم حذف المستخدم بنجاح', 'success')
             
-    return redirect(url_for('admin_add_user'))
+    return redirect(url_for('admin_users_management'))
 
 # مسار خلفي للتعامل مع جافاسكريبت إعادة تعيين باسوورد المستخدمين الموجود في ملف admin_users.html
 @app.route('/admin/user/reset-password/<int:user_id>', methods=['POST'])
