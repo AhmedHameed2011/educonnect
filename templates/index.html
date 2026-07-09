@@ -122,7 +122,7 @@
             </div>
             <div class="header-actions">
                 {% if current_user and current_user.role|lower == 'admin' %}
-                <a href="{{ url_for('admin_users') }}" class="logout-btn admin-icon-btn" title="إدارة المستخدمين">
+                <a href="{{ url_for('admin_add_user') }}" class="logout-btn admin-icon-btn" title="إدارة المستخدمين">
                     <i class="fa-solid fa-user-gear"></i>
                 </a>
                 {% endif %}
