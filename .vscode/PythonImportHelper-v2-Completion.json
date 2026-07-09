@@ -192,6 +192,62 @@
         "documentation": {}
     },
     {
+        "label": "render_template",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "redirect",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "url_for",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "session",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "jsonify",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "flash",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
         "label": "login_required",
         "importPath": "flask_login",
         "description": "flask_login",
@@ -328,11 +384,19 @@
         "documentation": {}
     },
     {
-        "label": "db",
-        "importPath": "extensions",
-        "description": "extensions",
+        "label": "generate_password_hash",
+        "importPath": "werkzeug.security",
+        "description": "werkzeug.security",
         "isExtraImport": true,
-        "detail": "extensions",
+        "detail": "werkzeug.security",
+        "documentation": {}
+    },
+    {
+        "label": "check_password_hash",
+        "importPath": "werkzeug.security",
+        "description": "werkzeug.security",
+        "isExtraImport": true,
+        "detail": "werkzeug.security",
         "documentation": {}
     },
     {
@@ -369,14 +433,6 @@
     },
     {
         "label": "db",
-        "importPath": "extensions",
-        "description": "extensions",
-        "isExtraImport": true,
-        "detail": "extensions",
-        "documentation": {}
-    },
-    {
-        "label": "login_manager",
         "importPath": "extensions",
         "description": "extensions",
         "isExtraImport": true,
@@ -472,14 +528,6 @@
         "documentation": {}
     },
     {
-        "label": "User",
-        "importPath": "models",
-        "description": "models",
-        "isExtraImport": true,
-        "detail": "models",
-        "documentation": {}
-    },
-    {
         "label": "datetime",
         "importPath": "datetime",
         "description": "datetime",
@@ -509,62 +557,6 @@
         "description": "datetime",
         "isExtraImport": true,
         "detail": "datetime",
-        "documentation": {}
-    },
-    {
-        "label": "admin_bp",
-        "importPath": "routes.admin",
-        "description": "routes.admin",
-        "isExtraImport": true,
-        "detail": "routes.admin",
-        "documentation": {}
-    },
-    {
-        "label": "Config",
-        "importPath": "config",
-        "description": "config",
-        "isExtraImport": true,
-        "detail": "config",
-        "documentation": {}
-    },
-    {
-        "label": "auth_bp",
-        "importPath": "routes.auth",
-        "description": "routes.auth",
-        "isExtraImport": true,
-        "detail": "routes.auth",
-        "documentation": {}
-    },
-    {
-        "label": "dashboard_bp",
-        "importPath": "routes.dashboard",
-        "description": "routes.dashboard",
-        "isExtraImport": true,
-        "detail": "routes.dashboard",
-        "documentation": {}
-    },
-    {
-        "label": "messages_bp",
-        "importPath": "routes.messages",
-        "description": "routes.messages",
-        "isExtraImport": true,
-        "detail": "routes.messages",
-        "documentation": {}
-    },
-    {
-        "label": "notifications_bp",
-        "importPath": "routes.notifications",
-        "description": "routes.notifications",
-        "isExtraImport": true,
-        "detail": "routes.notifications",
-        "documentation": {}
-    },
-    {
-        "label": "events_bp",
-        "importPath": "routes.events",
-        "description": "routes.events",
-        "isExtraImport": true,
-        "detail": "routes.events",
         "documentation": {}
     },
     {
@@ -574,6 +566,14 @@
         "importPath": "os",
         "description": "os",
         "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "SQLAlchemy",
+        "importPath": "flask_sqlalchemy",
+        "description": "flask_sqlalchemy",
+        "isExtraImport": true,
+        "detail": "flask_sqlalchemy",
         "documentation": {}
     },
     {
@@ -791,11 +791,200 @@
         "documentation": {}
     },
     {
-        "label": "create_app",
+        "label": "User",
+        "kind": 6,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "class User(db.Model):\n    id = db.Column(db.Integer, primary_key=True)\n    username = db.Column(db.String(80), unique=True, nullable=False)\n    password = db.Column(db.String(200), nullable=False)\n    name = db.Column(db.String(100), nullable=False)\n    role = db.Column(db.String(20), nullable=False)  # admin, teacher, parent, student\nclass Message(db.Model):\n    id = db.Column(db.Integer, primary_key=True)\n    sender_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)\n    receiver_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "Message",
+        "kind": 6,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "class Message(db.Model):\n    id = db.Column(db.Integer, primary_key=True)\n    sender_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)\n    receiver_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)\n    content = db.Column(db.Text, nullable=False)\n    timestamp = db.Column(db.DateTime, default=db.func.current_timestamp())\nclass Alert(db.Model):\n    id = db.Column(db.Integer, primary_key=True)\n    title = db.Column(db.String(200), nullable=False)\n    content = db.Column(db.Text, nullable=False)",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "Alert",
+        "kind": 6,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "class Alert(db.Model):\n    id = db.Column(db.Integer, primary_key=True)\n    title = db.Column(db.String(200), nullable=False)\n    content = db.Column(db.Text, nullable=False)\n    timestamp = db.Column(db.DateTime, default=db.func.current_timestamp())\nclass CalendarEvent(db.Model):\n    id = db.Column(db.Integer, primary_key=True)\n    title = db.Column(db.String(200), nullable=False)\n    date = db.Column(db.String(50), nullable=False)  # YYYY-MM-DD\n    description = db.Column(db.Text, nullable=False)",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "CalendarEvent",
+        "kind": 6,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "class CalendarEvent(db.Model):\n    id = db.Column(db.Integer, primary_key=True)\n    title = db.Column(db.String(200), nullable=False)\n    date = db.Column(db.String(50), nullable=False)  # YYYY-MM-DD\n    description = db.Column(db.Text, nullable=False)\n# سياق محاكي للمستخدم الحالي لتبسيط العمليات في القوالب\nclass CurrentUserProxy:\n    def __init__(self, user_obj):\n        self.id = user_obj.id\n        self.name = user_obj.name",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "CurrentUserProxy",
+        "kind": 6,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "class CurrentUserProxy:\n    def __init__(self, user_obj):\n        self.id = user_obj.id\n        self.name = user_obj.name\n        self.role = user_obj.role\n        self.username = user_obj.username\n@app.context_processor\ndef inject_user():\n    if 'user_id' in session:\n        user = User.query.get(session['user_id'])",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "inject_user",
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def create_app():\n    app = Flask(__name__)\n    app.config.from_object(Config)\n    # Initialize extensions\n    db.init_app(app)\n    login_manager.init_app(app)\n    # User loader for Flask-Login\n    @login_manager.user_loader\n    def load_user(user_id):\n        return User.query.get(int(user_id))",
+        "peekOfCode": "def inject_user():\n    if 'user_id' in session:\n        user = User.query.get(session['user_id'])\n        if user:\n            return dict(current_user=CurrentUserProxy(user))\n    return dict(current_user=None)\n# ----------------- المسارات والتحكم (Routes) -----------------\n@app.route('/')\ndef index():\n    if 'user_id' not in session:",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "index",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def index():\n    if 'user_id' not in session:\n        return redirect(url_for('login'))\n    # جلب جميع المستخدمين الآخرين لتبدأ معهم المحادثة\n    users = User.query.filter(User.id != session['user_id']).all()\n    return render_template('index.html', users=users)\n@app.route('/login', methods=['GET', 'POST'])\ndef login():\n    if request.method == 'POST':\n        username = request.form.get('username')",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "login",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def login():\n    if request.method == 'POST':\n        username = request.form.get('username')\n        password = request.form.get('password')\n        user = User.query.filter_by(username=username).first()\n        if user and check_password_hash(user.password, password):\n            login_user(user)\n            return redirect(url_for('index'))\n        else:\n            # 💡 تأكد من وجود هذا السطر تماماً في جزء الـ else",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "get_messages",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def get_messages(receiver_id):\n    if 'user_id' not in session:\n        return jsonify({'status': 'error', 'message': 'Unauthorized'}), 401\n    my_id = session['user_id']\n    messages = Message.query.filter(\n        ((Message.sender_id == my_id) & (Message.receiver_id == receiver_id)) |\n        ((Message.sender_id == receiver_id) & (Message.receiver_id == my_id))\n    ).order_by(Message.timestamp.asc()).all()\n    msg_list = [{\n        'sender_id': m.sender_id,",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "send_message",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def send_message():\n    if 'user_id' not in session:\n        return jsonify({'status': 'error', 'message': 'Unauthorized'}), 401\n    data = request.get_json()\n    receiver_id = data.get('receiver_id')\n    content = data.get('content', '').strip()\n    if not content or not receiver_id:\n        return jsonify({'status': 'error', 'message': 'Missing data'}), 400\n    new_msg = Message(sender_id=session['user_id'], receiver_id=receiver_id, content=content)\n    db.session.add(new_msg)",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "get_alerts",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def get_alerts():\n    alerts = Alert.query.order_by(Alert.timestamp.desc()).all()\n    alert_list = [{\n        'id': a.id,\n        'title': a.title,\n        'content': a.content,\n        'time': a.timestamp.strftime('%H:%M %Y-%m-%d')\n    } for a in alerts]\n    return jsonify({'status': 'success', 'alerts': alert_list})\n@app.route('/add_alert', methods=['POST'])",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "add_alert",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def add_alert():\n    if 'user_id' not in session or session.get('user_role', '').lower() != 'admin':\n        return jsonify({'status': 'error', 'message': 'Forbidden'}), 403\n    data = request.get_json()\n    new_alert = Alert(title=data.get('title'), content=data.get('content'))\n    db.session.add(new_alert)\n    db.session.commit()\n    return jsonify({'status': 'success'})\n@app.route('/edit_alert/<int:id>', methods=['POST'])\ndef edit_alert(id):",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "edit_alert",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def edit_alert(id):\n    if 'user_id' not in session or session.get('user_role', '').lower() != 'admin':\n        return jsonify({'status': 'error', 'message': 'Forbidden'}), 403\n    data = request.get_json()\n    alert = Alert.query.get_or_404(id)\n    alert.title = data.get('title')\n    alert.content = data.get('content')\n    db.session.commit()\n    return jsonify({'status': 'success'})\n@app.route('/delete_alert/<int:id>', methods=['DELETE'])",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "delete_alert",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def delete_alert(id):\n    if 'user_id' not in session or session.get('user_role', '').lower() != 'admin':\n        return jsonify({'status': 'error', 'message': 'Forbidden'}), 403\n    alert = Alert.query.get_or_404(id)\n    db.session.delete(alert)\n    db.session.commit()\n    return jsonify({'status': 'success'})\n# ----- نظام التقويم الدراسي -----\n@app.route('/get_events', methods=['GET'])\ndef get_events():",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "get_events",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def get_events():\n    events = CalendarEvent.query.order_by(CalendarEvent.date.asc()).all()\n    event_list = [{\n        'id': e.id,\n        'title': e.title,\n        'date': e.date,\n        'description': e.description\n    } for e in events]\n    return jsonify({'status': 'success', 'events': event_list})\n@app.route('/add_event', methods=['POST'])",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "add_event",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def add_event():\n    if 'user_id' not in session or session.get('user_role', '').lower() != 'admin':\n        return jsonify({'status': 'error', 'message': 'Forbidden'}), 403\n    data = request.get_json()\n    new_event = CalendarEvent(title=data.get('title'), date=data.get('date'), description=data.get('description'))\n    db.session.add(new_event)\n    db.session.commit()\n    return jsonify({'status': 'success'})\n@app.route('/edit_event/<int:id>', methods=['POST'])\ndef edit_event(id):",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "edit_event",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def edit_event(id):\n    if 'user_id' not in session or session.get('user_role', '').lower() != 'admin':\n        return jsonify({'status': 'error', 'message': 'Forbidden'}), 403\n    data = request.get_json()\n    event = CalendarEvent.query.get_or_404(id)\n    event.title = data.get('title')\n    event.date = data.get('date')\n    event.description = data.get('description')\n    db.session.commit()\n    return jsonify({'status': 'success'})",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "delete_event",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def delete_event(id):\n    if 'user_id' not in session or session.get('user_role', '').lower() != 'admin':\n        return jsonify({'status': 'error', 'message': 'Forbidden'}), 403\n    event = CalendarEvent.query.get_or_404(id)\n    db.session.delete(event)\n    db.session.commit()\n    return jsonify({'status': 'success'})\n# ----- شاشة إدارة المستخدمين وعملياتها -----\n@app.route('/admin/users')\ndef admin_users():",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "admin_users",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def admin_users():\n    if 'user_id' not in session or session.get('user_role', '').lower() != 'admin':\n        return redirect(url_for('index'))\n    all_users = User.query.all()\n    return render_template('admin_users.html', all_users=all_users)\n@app.route('/admin/user/add', methods=['POST'])\ndef admin_add_user():\n    if 'user_id' not in session or session.get('user_role', '').lower() != 'admin':\n        return redirect(url_for('index'))\n    username = request.form.get('username').strip()",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "admin_add_user",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def admin_add_user():\n    if 'user_id' not in session or session.get('user_role', '').lower() != 'admin':\n        return redirect(url_for('index'))\n    username = request.form.get('username').strip()\n    name = request.form.get('name').strip()\n    role = request.form.get('role')\n    password = request.form.get('password').strip()\n    if User.query.filter_by(username=username).first():\n        all_users = User.query.all()\n        return render_template('admin_users.html', all_users=all_users, error=\"اسم المستخدم مسجل مسبقاً\")",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "admin_delete_user",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def admin_delete_user(user_id):\n    if 'user_id' not in session or session.get('user_role', '').lower() != 'admin':\n        return redirect(url_for('index'))\n    if user_id == session['user_id']:\n        return redirect(url_for('admin_users')) # لا يمكن لحساب الأدمن حذف نفسه\n    user = User.query.get_or_404(user_id)\n    db.session.delete(user)\n    db.session.commit()\n    return redirect(url_for('admin_users'))\n# المسار الجديد المصلح لإعادة تعيين كلمة المرور بشكل آمن بالخلفية بدلاً من صفحة 404",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "admin_reset_password",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def admin_reset_password(user_id):\n    if 'user_id' not in session or session.get('user_role', '').lower() != 'admin':\n        return jsonify({'status': 'error', 'message': 'غير مصرح لك بالوصول'}), 403\n    user = User.query.get(user_id)\n    if not user:\n        return jsonify({'status': 'error', 'message': 'المستخدم غير موجود'}), 404\n    user.password = generate_password_hash('123456')\n    db.session.commit()\n    return jsonify({\n        'status': 'success',",
         "detail": "app",
         "documentation": {}
     },
@@ -804,7 +993,61 @@
         "kind": 5,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "app = create_app()\nif __name__ == \"__main__\":\n    app.run(debug=True, port=5000)",
+        "peekOfCode": "app = Flask(__name__)\napp.config['SECRET_KEY'] = 'educonnect_secret_key_123'  # 💡 هذا السطر إلزامي لتشغيل الـ flash\n# إعداد قاعدة البيانات (SQLite)\nBASE_DIR = os.path.abspath(os.path.dirname(__file__))\napp.config['SQLALCHEMY_DATABASE_DIR'] = os.path.join(BASE_DIR, 'instance')\napp.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(BASE_DIR, 'instance', 'educonnect.db')\napp.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False\ndb = SQLAlchemy(app)\n# ----------------- نماذج قاعدة البيانات (Models) -----------------\nclass User(db.Model):",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "app.config['SECRET_KEY']",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "app.config['SECRET_KEY'] = 'educonnect_secret_key_123'  # 💡 هذا السطر إلزامي لتشغيل الـ flash\n# إعداد قاعدة البيانات (SQLite)\nBASE_DIR = os.path.abspath(os.path.dirname(__file__))\napp.config['SQLALCHEMY_DATABASE_DIR'] = os.path.join(BASE_DIR, 'instance')\napp.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(BASE_DIR, 'instance', 'educonnect.db')\napp.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False\ndb = SQLAlchemy(app)\n# ----------------- نماذج قاعدة البيانات (Models) -----------------\nclass User(db.Model):\n    id = db.Column(db.Integer, primary_key=True)",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "BASE_DIR",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "BASE_DIR = os.path.abspath(os.path.dirname(__file__))\napp.config['SQLALCHEMY_DATABASE_DIR'] = os.path.join(BASE_DIR, 'instance')\napp.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(BASE_DIR, 'instance', 'educonnect.db')\napp.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False\ndb = SQLAlchemy(app)\n# ----------------- نماذج قاعدة البيانات (Models) -----------------\nclass User(db.Model):\n    id = db.Column(db.Integer, primary_key=True)\n    username = db.Column(db.String(80), unique=True, nullable=False)\n    password = db.Column(db.String(200), nullable=False)",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "app.config['SQLALCHEMY_DATABASE_DIR']",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "app.config['SQLALCHEMY_DATABASE_DIR'] = os.path.join(BASE_DIR, 'instance')\napp.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(BASE_DIR, 'instance', 'educonnect.db')\napp.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False\ndb = SQLAlchemy(app)\n# ----------------- نماذج قاعدة البيانات (Models) -----------------\nclass User(db.Model):\n    id = db.Column(db.Integer, primary_key=True)\n    username = db.Column(db.String(80), unique=True, nullable=False)\n    password = db.Column(db.String(200), nullable=False)\n    name = db.Column(db.String(100), nullable=False)",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "app.config['SQLALCHEMY_DATABASE_URI']",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(BASE_DIR, 'instance', 'educonnect.db')\napp.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False\ndb = SQLAlchemy(app)\n# ----------------- نماذج قاعدة البيانات (Models) -----------------\nclass User(db.Model):\n    id = db.Column(db.Integer, primary_key=True)\n    username = db.Column(db.String(80), unique=True, nullable=False)\n    password = db.Column(db.String(200), nullable=False)\n    name = db.Column(db.String(100), nullable=False)\n    role = db.Column(db.String(20), nullable=False)  # admin, teacher, parent, student",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "app.config['SQLALCHEMY_TRACK_MODIFICATIONS']",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False\ndb = SQLAlchemy(app)\n# ----------------- نماذج قاعدة البيانات (Models) -----------------\nclass User(db.Model):\n    id = db.Column(db.Integer, primary_key=True)\n    username = db.Column(db.String(80), unique=True, nullable=False)\n    password = db.Column(db.String(200), nullable=False)\n    name = db.Column(db.String(100), nullable=False)\n    role = db.Column(db.String(20), nullable=False)  # admin, teacher, parent, student\nclass Message(db.Model):",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "db",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "db = SQLAlchemy(app)\n# ----------------- نماذج قاعدة البيانات (Models) -----------------\nclass User(db.Model):\n    id = db.Column(db.Integer, primary_key=True)\n    username = db.Column(db.String(80), unique=True, nullable=False)\n    password = db.Column(db.String(200), nullable=False)\n    name = db.Column(db.String(100), nullable=False)\n    role = db.Column(db.String(20), nullable=False)  # admin, teacher, parent, student\nclass Message(db.Model):\n    id = db.Column(db.Integer, primary_key=True)",
         "detail": "app",
         "documentation": {}
     },
@@ -896,6 +1139,15 @@
         "description": "models",
         "peekOfCode": "class PushSubscription(db.Model):\n    id = db.Column(db.Integer, primary_key=True)\n    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)\n    endpoint = db.Column(db.String(500), nullable=False)\n    p256dh = db.Column(db.String(200), nullable=False)\n    auth = db.Column(db.String(200), nullable=False)",
         "detail": "models",
+        "documentation": {}
+    },
+    {
+        "label": "TRANSLATIONS",
+        "kind": 5,
+        "importPath": "translations",
+        "description": "translations",
+        "peekOfCode": "TRANSLATIONS = {\n    'ar': {\n        'app_title': 'إيدو كونيكت',\n        'logout': 'تسجيل الخروج',\n        'chats': 'المحادثات',\n        'alerts': 'التنبيهات',\n        'calendar': 'التقويم الدراسي',\n        'admin_panel': 'إدارة المستخدمين',\n        'search_placeholder': 'البحث عن جهة اتصال...',\n        'click_to_chat': 'اضغط لبدء المحادثة',",
+        "detail": "translations",
         "documentation": {}
     }
 ]

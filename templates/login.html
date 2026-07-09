@@ -24,18 +24,7 @@
                 <h1 class="logo-text">Edu<span>Connect</span></h1>
             </div>
 
-            {% with messages = get_flashed_messages(with_categories=true) %}
-    {% if messages %}
-        <div style="margin-bottom: 20px;">
-            {% for category, message in messages %}
-                <div style="background-color: #fee2e2; border-right: 4px solid #ef4444; color: #991b1b; padding: 12px 16px; border-radius: 12px; font-size: 14px; font-weight: bold; text-align: right; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);">
-                    ⚠️ {{ message }}
-                </div>
-            {% endfor %}
-        </div>
-    {% endif %}
-{% endwith %}
-
+            
             <div class="glass-panel" style="padding: 24px; border-radius: 24px; box-shadow: var(--glass-shadow); border: 1px solid var(--glass-border);">
                 <h2 style="font-size: 18px; font-weight: 700; margin-bottom: 20px; text-align: center; color: var(--text-main);">تسجيل الدخول إلى حسابك</h2>
                 
@@ -69,5 +58,16 @@
 
         </main>
     </div>
+
+    {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <script>
+        // إظهار رسالة الخطأ للمستخدم عبر نافذة المتصفح الرسمية
+        // هذا يضمن بقاء التصميم الأساسي كما هو دون زيادة أو نقصان
+        alert("⚠️ {{ messages[0] }}");
+    </script>
+  {% endif %}
+{% endwith %}
+
 </body>
 </html>

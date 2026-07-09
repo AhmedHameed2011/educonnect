@@ -1,10 +1,10 @@
 import os
-from flask import Flask, render_template, request, redirect, url_for, session, jsonify
+from flask import Flask, render_template, request, redirect, url_for, session, jsonify,flash
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
-app.secret_key = 'super_secret_key_for_educonnect_app'
+app.config['SECRET_KEY'] = 'educonnect_secret_key_123'  # 💡 هذا السطر إلزامي لتشغيل الـ flash
 
 # إعداد قاعدة البيانات (SQLite)
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
@@ -72,24 +72,19 @@ def index():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        # تحويل اسم المستخدم دائماً لحروف صغيرة لمنع مشاكل الحروف الكبيرة
-        username = request.form.get('username').strip()
-        password = request.form.get('password').strip()
+        username = request.form.get('username')
+        password = request.form.get('password')
         
         user = User.query.filter_by(username=username).first()
         if user and check_password_hash(user.password, password):
-            session['user_id'] = user.id
-            session['user_role'] = user.role
+            login_user(user)
             return redirect(url_for('index'))
         else:
-            return render_template('login.html', error="اسم المستخدم أو كلمة المرور غير صحيحة")
+            # 💡 تأكد من وجود هذا السطر تماماً في جزء الـ else
+            flash('اسم المستخدم أو كلمة المرور غير صحيحة!', 'danger')
             
     return render_template('login.html')
 
-@app.route('/logout')
-def logout():
-    session.clear()
-    return redirect(url_for('login'))
 
 # ----- نظام المحادثات والرسائل -----
 
